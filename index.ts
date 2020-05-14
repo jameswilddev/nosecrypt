@@ -1,5 +1,7 @@
 export { default as Color } from "./color";
 
+export { default as Json } from "./json";
+
 export { default as MatrixTransform } from "./transforms/matrix-transform";
 export { default as RotateTransform } from "./transforms/rotate-transform";
 export { default as ScaleTransform } from "./transforms/scale-transform";
