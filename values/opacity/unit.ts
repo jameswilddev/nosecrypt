@@ -2,30 +2,6 @@ import { Opacity } from "../..";
 
 describe(`values`, () => {
   describe(`Opacity`, () => {
-    describe(`transparent`, () => {
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = Opacity.transparent.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`0`);
-        });
-      });
-    });
-
-    describe(`opaque`, () => {
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = Opacity.opaque.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`1`);
-        });
-      });
-    });
-
     describe(`when within bounds`, () => {
       let opacity: Opacity;
       beforeAll(() => {

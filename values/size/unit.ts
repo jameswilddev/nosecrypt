@@ -2,30 +2,6 @@ import { Size } from "../..";
 
 describe(`values`, () => {
   describe(`Size`, () => {
-    describe(`zero`, () => {
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = Size.zero.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`0px`);
-        });
-      });
-    });
-
-    describe(`one`, () => {
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = Size.one.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`1px`);
-        });
-      });
-    });
-
     describe(`when within bounds`, () => {
       let size: Size;
       beforeAll(() => {
