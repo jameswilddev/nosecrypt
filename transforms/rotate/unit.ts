@@ -74,7 +74,7 @@ describe(`transforms`, () => {
           rendered = transform.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`rotate(224.765,-14.52,1734.2875)`);
+          expect(rendered).toEqual(`rotate(224.765 -14.52 1734.2875)`);
         });
       });
 

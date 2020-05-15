@@ -19,7 +19,7 @@ export default class Rotate implements Transform {
     if (this.x === undefined) {
       return `rotate(${this.angle})`;
     } else {
-      return `rotate(${this.angle},${this.x},${this.y})`;
+      return `rotate(${this.angle} ${this.x} ${this.y})`;
     }
   }
 }
