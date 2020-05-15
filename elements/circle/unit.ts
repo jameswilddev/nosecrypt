@@ -20,6 +20,12 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`children`, () => {
+        it(`is empty`, () => {
+          expect(circle.children).toEqual([]);
+        });
+      });
+
       describe(`render`, () => {
         let rendered: { readonly [attribute: string]: Value };
         beforeAll(() => {
@@ -57,6 +63,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -90,6 +102,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -135,6 +153,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -168,6 +192,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -213,6 +243,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -246,6 +282,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -291,6 +333,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -324,6 +372,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -369,6 +423,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -404,6 +464,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -445,6 +511,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -478,6 +550,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -523,6 +601,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -558,6 +642,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -599,6 +689,12 @@ describe(`elements`, () => {
           });
         });
 
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -632,6 +728,12 @@ describe(`elements`, () => {
         describe(`tagName`, () => {
           it(`is circle`, () => {
             expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
           });
         });
 
@@ -684,6 +786,12 @@ describe(`elements`, () => {
       describe(`tagName`, () => {
         it(`is circle`, () => {
           expect(circle.tagName).toEqual(`circle`);
+        });
+      });
+
+      describe(`children`, () => {
+        it(`is empty`, () => {
+          expect(circle.children).toEqual([]);
         });
       });
 

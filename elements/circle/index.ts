@@ -8,6 +8,8 @@ import Value from "../../values/value";
 export default class Circle<TState> implements Element<TState> {
   readonly tagName: string = `circle`;
 
+  readonly children: ReadonlyArray<Element<TState>> = [];
+
   constructor(
     private readonly renderCallback: (
       state: TState
