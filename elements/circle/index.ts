@@ -6,6 +6,8 @@ import Size from "../../values/size";
 import Value from "../../values/value";
 
 export default class Circle<TState> implements Element<TState> {
+  readonly tagName: string = `circle`;
+
   constructor(
     private readonly renderCallback: (
       state: TState

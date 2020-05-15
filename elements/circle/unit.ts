@@ -14,6 +14,12 @@ describe(`elements`, () => {
         circle = new Circle<TestState>(renderCallback);
       });
 
+      describe(`tagName`, () => {
+        it(`is circle`, () => {
+          expect(circle.tagName).toEqual(`circle`);
+        });
+      });
+
       describe(`render`, () => {
         let rendered: { readonly [attribute: string]: Value };
         beforeAll(() => {
@@ -45,6 +51,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -67,18 +79,24 @@ describe(`elements`, () => {
 
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
-        let cirlce: Circle<TestState>;
+        let circle: Circle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ centerX: 3287 });
-          cirlce = new Circle<TestState>(renderCallback);
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = cirlce.render(`Test State`);
+            rendered = circle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -111,6 +129,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -139,6 +163,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ centerY: 3287 });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -177,6 +207,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -205,6 +241,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ radius: 3287 });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -243,6 +285,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -271,6 +319,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeWidth: 3287 });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -309,6 +363,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -339,6 +399,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeColor });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -373,6 +439,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -401,6 +473,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeOpacity: 0.4 });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -439,6 +517,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -469,6 +553,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ fillColor });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -503,6 +593,12 @@ describe(`elements`, () => {
           circle = new Circle<TestState>(renderCallback);
         });
 
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
@@ -531,6 +627,12 @@ describe(`elements`, () => {
             .createSpy(`renderCallback`)
             .and.returnValue({ fillOpacity: 0.4 });
           circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
         });
 
         describe(`render`, () => {
@@ -577,6 +679,12 @@ describe(`elements`, () => {
           fillOpacity: 0.8,
         });
         circle = new Circle<TestState>(renderCallback);
+      });
+
+      describe(`tagName`, () => {
+        it(`is circle`, () => {
+          expect(circle.tagName).toEqual(`circle`);
+        });
       });
 
       describe(`render`, () => {
