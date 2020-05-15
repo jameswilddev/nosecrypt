@@ -17,6 +17,7 @@ export { default as ValidateUnitInterval } from "./validation/validate-unit-inte
 
 export { default as Color } from "./values/color";
 export { default as Opacity } from "./values/opacity";
+export { default as Position } from "./values/position";
 export { default as Size } from "./values/size";
 export { default as TransformSet } from "./values/transform-set";
 export { default as Value } from "./values/value";
