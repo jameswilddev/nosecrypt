@@ -94,7 +94,7 @@ describe(`elements`, () => {
           });
 
           it(`returns an attribute set including the appropriate centerX value`, () => {
-            expect(rendered.centerX.render()).toEqual(`3287px`);
+            expect(rendered.centerX.render()).toEqual(`3287`);
           });
         });
       });
@@ -160,7 +160,7 @@ describe(`elements`, () => {
           });
 
           it(`returns an attribute set including the appropriate centerY value`, () => {
-            expect(rendered.centerY.render()).toEqual(`3287px`);
+            expect(rendered.centerY.render()).toEqual(`3287`);
           });
         });
       });
@@ -226,7 +226,7 @@ describe(`elements`, () => {
           });
 
           it(`returns an attribute set including the appropriate radius value`, () => {
-            expect(rendered.radius.render()).toEqual(`3287px`);
+            expect(rendered.radius.render()).toEqual(`3287`);
           });
         });
       });
@@ -292,7 +292,7 @@ describe(`elements`, () => {
           });
 
           it(`returns an attribute set including the appropriate strokeWidth value`, () => {
-            expect(rendered.strokeWidth.render()).toEqual(`3287px`);
+            expect(rendered.strokeWidth.render()).toEqual(`3287`);
           });
         });
       });
@@ -607,19 +607,19 @@ describe(`elements`, () => {
         });
 
         it(`returns an attribute set including the appropriate centerX value`, () => {
-          expect(rendered.centerX.render()).toEqual(`43px`);
+          expect(rendered.centerX.render()).toEqual(`43`);
         });
 
         it(`returns an attribute set including the appropriate centerY value`, () => {
-          expect(rendered.centerY.render()).toEqual(`-64px`);
+          expect(rendered.centerY.render()).toEqual(`-64`);
         });
 
         it(`returns an attribute set including the appropriate radius value`, () => {
-          expect(rendered.radius.render()).toEqual(`12px`);
+          expect(rendered.radius.render()).toEqual(`12`);
         });
 
         it(`returns an attribute set including the appropriate strokeWidth value`, () => {
-          expect(rendered.strokeWidth.render()).toEqual(`2px`);
+          expect(rendered.strokeWidth.render()).toEqual(`2`);
         });
 
         it(`returns an attribute set including the appropriate strokeColor value`, () => {
