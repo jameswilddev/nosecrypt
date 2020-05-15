@@ -6,7 +6,7 @@ export default class TransformSet implements Value {
   private readonly transforms: ReadonlyArray<Transform>;
 
   constructor(...transforms: ReadonlyArray<Transform>) {
-    ValidateNotEmpty(transforms, `TranformSet.transforms`);
+    ValidateNotEmpty(transforms, `TransformSet.transforms`);
 
     this.transforms = transforms;
   }
