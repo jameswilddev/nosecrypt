@@ -1,6 +1,7 @@
-import ValidateUnitInterval from "../validation/validate-unit-interval";
+import ValidateUnitInterval from "../../validation/validate-unit-interval";
+import Value from "../value";
 
-export default class Color {
+export default class Color implements Value {
   static readonly black = new Color(0, 0, 0);
   static readonly grey50 = new Color(0.5, 0.5, 0.5);
   static readonly white = new Color(1, 1, 1);
