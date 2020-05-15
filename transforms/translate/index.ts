@@ -2,12 +2,12 @@ import Transform from "../transform";
 import ValidateAnyNumber from "../../validation/validate-any-number";
 import ValidateAnyOptionalNumber from "../../validation/validate-any-optional-number";
 
-export default class TranslateTransform implements Transform {
+export default class Translate implements Transform {
   constructor(x: number);
   constructor(x: number, y: number);
   constructor(private readonly x: number, private readonly y?: number) {
-    ValidateAnyNumber(x, `TranslateTransform.x`);
-    ValidateAnyOptionalNumber(y, `TranslateTransform.y`);
+    ValidateAnyNumber(x, `Translate.x`);
+    ValidateAnyOptionalNumber(y, `Translate.y`);
   }
 
   render(): string {

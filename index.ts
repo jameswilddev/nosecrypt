@@ -1,12 +1,12 @@
 export { default as Json } from "./json";
 
-export { default as MatrixTransform } from "./transforms/matrix-transform";
-export { default as RotateTransform } from "./transforms/rotate-transform";
-export { default as ScaleTransform } from "./transforms/scale-transform";
-export { default as SkewXTransform } from "./transforms/skew-x-transform";
-export { default as SkewYTransform } from "./transforms/skew-y-transform";
+export { default as Matrix } from "./transforms/matrix";
+export { default as Rotate } from "./transforms/rotate";
+export { default as Scale } from "./transforms/scale";
+export { default as SkewX } from "./transforms/skew-x";
+export { default as SkewY } from "./transforms/skew-y";
 export { default as Transform } from "./transforms/transform";
-export { default as TranslateTransform } from "./transforms/translate-transform";
+export { default as Translate } from "./transforms/translate";
 
 export { default as ValidateAnyNumber } from "./validation/validate-any-number";
 export { default as ValidateAnyOptionalNumber } from "./validation/validate-any-optional-number";

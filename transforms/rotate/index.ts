@@ -2,7 +2,7 @@ import Transform from "../transform";
 import ValidateAnyNumber from "../../validation/validate-any-number";
 import ValidateAnyOptionalNumber from "../../validation/validate-any-optional-number";
 
-export default class RotateTransform implements Transform {
+export default class Rotate implements Transform {
   constructor(angle: number);
   constructor(angle: number, x: number, y: number);
   constructor(
@@ -10,9 +10,9 @@ export default class RotateTransform implements Transform {
     private readonly x?: number,
     private readonly y?: number
   ) {
-    ValidateAnyNumber(angle, `RotateTransform.angle`);
-    ValidateAnyOptionalNumber(x, `RotateTransform.x`);
-    ValidateAnyOptionalNumber(y, `RotateTransform.y`);
+    ValidateAnyNumber(angle, `Rotate.angle`);
+    ValidateAnyOptionalNumber(x, `Rotate.x`);
+    ValidateAnyOptionalNumber(y, `Rotate.y`);
   }
 
   render(): string {

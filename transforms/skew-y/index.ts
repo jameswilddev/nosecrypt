@@ -1,9 +1,9 @@
 import Transform from "../transform";
 import ValidateAnyNumber from "../../validation/validate-any-number";
 
-export default class SkewYTransform implements Transform {
+export default class SkewY implements Transform {
   constructor(private readonly a: number) {
-    ValidateAnyNumber(a, `SkewYTransform.a`);
+    ValidateAnyNumber(a, `SkewY.a`);
   }
 
   render(): string {

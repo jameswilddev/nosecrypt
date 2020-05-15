@@ -1,10 +1,10 @@
-import { SkewXTransform } from "../..";
+import { SkewX } from "../..";
 
 describe(`transforms`, () => {
-  describe(`SkewXTransform`, () => {
-    let transform: SkewXTransform;
+  describe(`SkewX`, () => {
+    let transform: SkewX;
     beforeAll(() => {
-      transform = new SkewXTransform(224.765);
+      transform = new SkewX(224.765);
     });
 
     describe(`render`, () => {
@@ -22,15 +22,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new SkewXTransform(Number.NaN);
+            new SkewX(Number.NaN);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`SkewXTransform.a must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`SkewX.a must be a number`));
         });
       });
 
@@ -38,13 +36,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new SkewXTransform(Number.POSITIVE_INFINITY);
+            new SkewX(Number.POSITIVE_INFINITY);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`SkewXTransform.a must be finite`));
+          expect(thrown).toEqual(new Error(`SkewX.a must be finite`));
         });
       });
 
@@ -52,13 +50,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new SkewXTransform(Number.NEGATIVE_INFINITY);
+            new SkewX(Number.NEGATIVE_INFINITY);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`SkewXTransform.a must be finite`));
+          expect(thrown).toEqual(new Error(`SkewX.a must be finite`));
         });
       });
     });

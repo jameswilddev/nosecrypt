@@ -1,9 +1,4 @@
-import {
-  TransformSet,
-  ScaleTransform,
-  TranslateTransform,
-  RotateTransform,
-} from "../..";
+import { TransformSet, Scale, Translate, Rotate } from "../..";
 
 describe(`values`, () => {
   describe(`TransformSet`, () => {
@@ -27,7 +22,7 @@ describe(`values`, () => {
     describe(`with one transform`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
-        transformSet = new TransformSet(new ScaleTransform(23, -18));
+        transformSet = new TransformSet(new Scale(23, -18));
       });
 
       describe(`render`, () => {
@@ -45,8 +40,8 @@ describe(`values`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
         transformSet = new TransformSet(
-          new ScaleTransform(23, -18),
-          new TranslateTransform(-4, 7)
+          new Scale(23, -18),
+          new Translate(-4, 7)
         );
       });
 
@@ -65,9 +60,9 @@ describe(`values`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
         transformSet = new TransformSet(
-          new ScaleTransform(23, -18),
-          new TranslateTransform(-4, 7),
-          new RotateTransform(90)
+          new Scale(23, -18),
+          new Translate(-4, 7),
+          new Rotate(90)
         );
       });
 

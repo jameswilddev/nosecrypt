@@ -1,10 +1,10 @@
-import { MatrixTransform } from "../..";
+import { Matrix } from "../..";
 
 describe(`transforms`, () => {
-  describe(`MatrixTransform`, () => {
-    let transform: MatrixTransform;
+  describe(`Matrix`, () => {
+    let transform: Matrix;
     beforeAll(() => {
-      transform = new MatrixTransform(
+      transform = new Matrix(
         224.765,
         -14.52,
         1734.2875,
@@ -31,22 +31,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              Number.NaN,
-              -14.52,
-              1734.2875,
-              16.62,
-              -31.5446,
-              20.45
-            );
+            new Matrix(Number.NaN, -14.52, 1734.2875, 16.62, -31.5446, 20.45);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.a must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.a must be a number`));
         });
       });
 
@@ -54,7 +45,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               Number.POSITIVE_INFINITY,
               -14.52,
               1734.2875,
@@ -67,7 +58,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.a must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.a must be finite`));
         });
       });
 
@@ -75,7 +66,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               Number.NEGATIVE_INFINITY,
               -14.52,
               1734.2875,
@@ -88,7 +79,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.a must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.a must be finite`));
         });
       });
     });
@@ -98,22 +89,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              224.765,
-              Number.NaN,
-              1734.2875,
-              16.62,
-              -31.5446,
-              20.45
-            );
+            new Matrix(224.765, Number.NaN, 1734.2875, 16.62, -31.5446, 20.45);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.b must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.b must be a number`));
         });
       });
 
@@ -121,7 +103,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               Number.POSITIVE_INFINITY,
               1734.2875,
@@ -134,7 +116,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.b must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.b must be finite`));
         });
       });
 
@@ -142,7 +124,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               Number.NEGATIVE_INFINITY,
               1734.2875,
@@ -155,7 +137,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.b must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.b must be finite`));
         });
       });
     });
@@ -165,22 +147,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              224.765,
-              -14.52,
-              Number.NaN,
-              16.62,
-              -31.5446,
-              20.45
-            );
+            new Matrix(224.765, -14.52, Number.NaN, 16.62, -31.5446, 20.45);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.c must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.c must be a number`));
         });
       });
 
@@ -188,7 +161,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               Number.POSITIVE_INFINITY,
@@ -201,7 +174,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.c must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.c must be finite`));
         });
       });
 
@@ -209,7 +182,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               Number.NEGATIVE_INFINITY,
@@ -222,7 +195,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.c must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.c must be finite`));
         });
       });
     });
@@ -232,22 +205,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              224.765,
-              -14.52,
-              1734.2875,
-              Number.NaN,
-              -31.5446,
-              20.45
-            );
+            new Matrix(224.765, -14.52, 1734.2875, Number.NaN, -31.5446, 20.45);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.d must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.d must be a number`));
         });
       });
 
@@ -255,7 +219,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -268,7 +232,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.d must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.d must be finite`));
         });
       });
 
@@ -276,7 +240,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -289,7 +253,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.d must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.d must be finite`));
         });
       });
     });
@@ -299,22 +263,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              224.765,
-              -14.52,
-              1734.2875,
-              16.62,
-              Number.NaN,
-              20.45
-            );
+            new Matrix(224.765, -14.52, 1734.2875, 16.62, Number.NaN, 20.45);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.e must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.e must be a number`));
         });
       });
 
@@ -322,7 +277,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -335,7 +290,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.e must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.e must be finite`));
         });
       });
 
@@ -343,7 +298,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -356,7 +311,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.e must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.e must be finite`));
         });
       });
     });
@@ -366,22 +321,13 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
-              224.765,
-              -14.52,
-              1734.2875,
-              16.62,
-              -31.5446,
-              Number.NaN
-            );
+            new Matrix(224.765, -14.52, 1734.2875, 16.62, -31.5446, Number.NaN);
           } catch (e) {
             thrown = e;
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`MatrixTransform.f must be a number`)
-          );
+          expect(thrown).toEqual(new Error(`Matrix.f must be a number`));
         });
       });
 
@@ -389,7 +335,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -402,7 +348,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.f must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.f must be finite`));
         });
       });
 
@@ -410,7 +356,7 @@ describe(`transforms`, () => {
         let thrown: Error;
         beforeAll(() => {
           try {
-            new MatrixTransform(
+            new Matrix(
               224.765,
               -14.52,
               1734.2875,
@@ -423,7 +369,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`MatrixTransform.f must be finite`));
+          expect(thrown).toEqual(new Error(`Matrix.f must be finite`));
         });
       });
     });

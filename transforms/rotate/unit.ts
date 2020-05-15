@@ -1,11 +1,11 @@
-import { RotateTransform } from "../..";
+import { Rotate } from "../..";
 
 describe(`transforms`, () => {
-  describe(`RotateTransform`, () => {
+  describe(`Rotate`, () => {
     describe(`without a point around which to rotate`, () => {
-      let transform: RotateTransform;
+      let transform: Rotate;
       beforeAll(() => {
-        transform = new RotateTransform(224.765);
+        transform = new Rotate(224.765);
       });
 
       describe(`render`, () => {
@@ -23,15 +23,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.NaN);
+              new Rotate(Number.NaN);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be a number`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be a number`));
           });
         });
 
@@ -39,15 +37,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.POSITIVE_INFINITY);
+              new Rotate(Number.POSITIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
           });
         });
 
@@ -55,23 +51,21 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.NEGATIVE_INFINITY);
+              new Rotate(Number.NEGATIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
           });
         });
       });
     });
     describe(`with a point around which to rotate`, () => {
-      let transform: RotateTransform;
+      let transform: Rotate;
       beforeAll(() => {
-        transform = new RotateTransform(224.765, -14.52, 1734.2875);
+        transform = new Rotate(224.765, -14.52, 1734.2875);
       });
 
       describe(`render`, () => {
@@ -89,15 +83,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.NaN, -14.52, 1734.2875);
+              new Rotate(Number.NaN, -14.52, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be a number`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be a number`));
           });
         });
 
@@ -105,15 +97,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.POSITIVE_INFINITY, -14.52, 1734.2875);
+              new Rotate(Number.POSITIVE_INFINITY, -14.52, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
           });
         });
 
@@ -121,15 +111,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(Number.NEGATIVE_INFINITY, -14.52, 1734.2875);
+              new Rotate(Number.NEGATIVE_INFINITY, -14.52, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`RotateTransform.angle must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
           });
         });
       });
@@ -139,14 +127,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, Number.NaN, 1734.2875);
+              new Rotate(-14.52, Number.NaN, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.x must be a number when given`)
+              new Error(`Rotate.x must be a number when given`)
             );
           });
         });
@@ -155,14 +143,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, Number.POSITIVE_INFINITY, 1734.2875);
+              new Rotate(-14.52, Number.POSITIVE_INFINITY, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.x must be finite when given`)
+              new Error(`Rotate.x must be finite when given`)
             );
           });
         });
@@ -171,14 +159,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, Number.NEGATIVE_INFINITY, 1734.2875);
+              new Rotate(-14.52, Number.NEGATIVE_INFINITY, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.x must be finite when given`)
+              new Error(`Rotate.x must be finite when given`)
             );
           });
         });
@@ -189,14 +177,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, 1734.2875, Number.NaN);
+              new Rotate(-14.52, 1734.2875, Number.NaN);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.y must be a number when given`)
+              new Error(`Rotate.y must be a number when given`)
             );
           });
         });
@@ -205,14 +193,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, 1734.2875, Number.POSITIVE_INFINITY);
+              new Rotate(-14.52, 1734.2875, Number.POSITIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.y must be finite when given`)
+              new Error(`Rotate.y must be finite when given`)
             );
           });
         });
@@ -221,14 +209,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new RotateTransform(-14.52, 1734.2875, Number.NEGATIVE_INFINITY);
+              new Rotate(-14.52, 1734.2875, Number.NEGATIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`RotateTransform.y must be finite when given`)
+              new Error(`Rotate.y must be finite when given`)
             );
           });
         });

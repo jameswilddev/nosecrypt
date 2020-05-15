@@ -1,11 +1,11 @@
-import { TranslateTransform } from "../..";
+import { Scale } from "../..";
 
 describe(`transforms`, () => {
-  describe(`TranslateTransform`, () => {
+  describe(`Scale`, () => {
     describe(`without a y axis`, () => {
-      let transform: TranslateTransform;
+      let transform: Scale;
       beforeAll(() => {
-        transform = new TranslateTransform(224.765);
+        transform = new Scale(224.765);
       });
 
       describe(`render`, () => {
@@ -14,24 +14,22 @@ describe(`transforms`, () => {
           rendered = transform.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`translate(224.765)`);
+          expect(rendered).toEqual(`scale(224.765)`);
         });
       });
 
-      describe(`x`, () => {
+      describe(`xy`, () => {
         describe(`NaN`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.NaN);
+              new Scale(Number.NaN);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be a number`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.xy must be a number`));
           });
         });
 
@@ -39,15 +37,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.POSITIVE_INFINITY);
+              new Scale(Number.POSITIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.xy must be finite`));
           });
         });
 
@@ -55,24 +51,22 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.NEGATIVE_INFINITY);
+              new Scale(Number.NEGATIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.xy must be finite`));
           });
         });
       });
     });
 
     describe(`with a y axis`, () => {
-      let transform: TranslateTransform;
+      let transform: Scale;
       beforeAll(() => {
-        transform = new TranslateTransform(224.765, -14.52);
+        transform = new Scale(224.765, -14.52);
       });
 
       describe(`render`, () => {
@@ -81,7 +75,7 @@ describe(`transforms`, () => {
           rendered = transform.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`translate(224.765 -14.52)`);
+          expect(rendered).toEqual(`scale(224.765,-14.52)`);
         });
       });
 
@@ -90,15 +84,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.NaN, 1734.2875);
+              new Scale(Number.NaN, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be a number`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.x must be a number`));
           });
         });
 
@@ -106,15 +98,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.POSITIVE_INFINITY, 1734.2875);
+              new Scale(Number.POSITIVE_INFINITY, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.x must be finite`));
           });
         });
 
@@ -122,15 +112,13 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(Number.NEGATIVE_INFINITY, 1734.2875);
+              new Scale(Number.NEGATIVE_INFINITY, 1734.2875);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(
-              new Error(`TranslateTransform.x must be finite`)
-            );
+            expect(thrown).toEqual(new Error(`Scale.x must be finite`));
           });
         });
       });
@@ -140,14 +128,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(1734.2875, Number.NaN);
+              new Scale(1734.2875, Number.NaN);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`TranslateTransform.y must be a number when given`)
+              new Error(`Scale.y must be a number when given`)
             );
           });
         });
@@ -156,14 +144,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(1734.2875, Number.POSITIVE_INFINITY);
+              new Scale(1734.2875, Number.POSITIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`TranslateTransform.y must be finite when given`)
+              new Error(`Scale.y must be finite when given`)
             );
           });
         });
@@ -172,14 +160,14 @@ describe(`transforms`, () => {
           let thrown: Error;
           beforeAll(() => {
             try {
-              new TranslateTransform(1734.2875, Number.NEGATIVE_INFINITY);
+              new Scale(1734.2875, Number.NEGATIVE_INFINITY);
             } catch (e) {
               thrown = e;
             }
           });
           it(`throws the expected error`, () => {
             expect(thrown).toEqual(
-              new Error(`TranslateTransform.y must be finite when given`)
+              new Error(`Scale.y must be finite when given`)
             );
           });
         });

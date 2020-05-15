@@ -1,7 +1,7 @@
 import Transform from "../transform";
 import ValidateAnyNumber from "../../validation/validate-any-number";
 
-export default class MatrixTransform implements Transform {
+export default class Matrix implements Transform {
   constructor(
     private readonly a: number,
     private readonly b: number,
@@ -10,12 +10,12 @@ export default class MatrixTransform implements Transform {
     private readonly e: number,
     private readonly f: number
   ) {
-    ValidateAnyNumber(a, `MatrixTransform.a`);
-    ValidateAnyNumber(b, `MatrixTransform.b`);
-    ValidateAnyNumber(c, `MatrixTransform.c`);
-    ValidateAnyNumber(d, `MatrixTransform.d`);
-    ValidateAnyNumber(e, `MatrixTransform.e`);
-    ValidateAnyNumber(f, `MatrixTransform.f`);
+    ValidateAnyNumber(a, `Matrix.a`);
+    ValidateAnyNumber(b, `Matrix.b`);
+    ValidateAnyNumber(c, `Matrix.c`);
+    ValidateAnyNumber(d, `Matrix.d`);
+    ValidateAnyNumber(e, `Matrix.e`);
+    ValidateAnyNumber(f, `Matrix.f`);
   }
 
   render(): string {
