@@ -14,7 +14,7 @@ describe(`values`, () => {
           rendered = position.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`0px`);
+          expect(rendered).toEqual(`0`);
         });
       });
     });
@@ -31,7 +31,7 @@ describe(`values`, () => {
           rendered = position.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`-3123.542px`);
+          expect(rendered).toEqual(`-3123.542`);
         });
       });
     });
@@ -48,7 +48,7 @@ describe(`values`, () => {
           rendered = position.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`3123.542px`);
+          expect(rendered).toEqual(`3123.542`);
         });
       });
     });

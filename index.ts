@@ -1,5 +1,8 @@
 export { default as Json } from "./json";
 
+export { default as Circle } from "./elements/circle";
+export { default as Element } from "./elements/element";
+
 export { default as Matrix } from "./transforms/matrix";
 export { default as Rotate } from "./transforms/rotate";
 export { default as Scale } from "./transforms/scale";

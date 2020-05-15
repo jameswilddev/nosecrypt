@@ -7,6 +7,6 @@ export default class Position implements Value {
   }
 
   render(): string {
-    return `${this.value}px`;
+    return `${this.value}`;
   }
 }

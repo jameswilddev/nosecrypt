@@ -18,7 +18,7 @@ describe(`transforms`, () => {
         });
       });
 
-      describe(`angle`, () => {
+      describe(`degrees`, () => {
         describe(`NaN`, () => {
           let thrown: Error;
           beforeAll(() => {
@@ -29,7 +29,9 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be a number`));
+            expect(thrown).toEqual(
+              new Error(`Rotate.degrees must be a number`)
+            );
           });
         });
 
@@ -43,7 +45,7 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
+            expect(thrown).toEqual(new Error(`Rotate.degrees must be finite`));
           });
         });
 
@@ -57,7 +59,7 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
+            expect(thrown).toEqual(new Error(`Rotate.degrees must be finite`));
           });
         });
       });
@@ -74,11 +76,11 @@ describe(`transforms`, () => {
           rendered = transform.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`rotate(224.765,-14.52,1734.2875)`);
+          expect(rendered).toEqual(`rotate(224.765 -14.52 1734.2875)`);
         });
       });
 
-      describe(`angle`, () => {
+      describe(`degrees`, () => {
         describe(`NaN`, () => {
           let thrown: Error;
           beforeAll(() => {
@@ -89,7 +91,9 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be a number`));
+            expect(thrown).toEqual(
+              new Error(`Rotate.degrees must be a number`)
+            );
           });
         });
 
@@ -103,7 +107,7 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
+            expect(thrown).toEqual(new Error(`Rotate.degrees must be finite`));
           });
         });
 
@@ -117,7 +121,7 @@ describe(`transforms`, () => {
             }
           });
           it(`throws the expected error`, () => {
-            expect(thrown).toEqual(new Error(`Rotate.angle must be finite`));
+            expect(thrown).toEqual(new Error(`Rotate.degrees must be finite`));
           });
         });
       });

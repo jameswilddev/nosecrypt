@@ -17,7 +17,7 @@ describe(`transforms`, () => {
       });
     });
 
-    describe(`a`, () => {
+    describe(`degrees`, () => {
       describe(`NaN`, () => {
         let thrown: Error;
         beforeAll(() => {
@@ -28,7 +28,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`SkewX.a must be a number`));
+          expect(thrown).toEqual(new Error(`SkewX.degrees must be a number`));
         });
       });
 
@@ -42,7 +42,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`SkewX.a must be finite`));
+          expect(thrown).toEqual(new Error(`SkewX.degrees must be finite`));
         });
       });
 
@@ -56,7 +56,7 @@ describe(`transforms`, () => {
           }
         });
         it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`SkewX.a must be finite`));
+          expect(thrown).toEqual(new Error(`SkewX.degrees must be finite`));
         });
       });
     });

@@ -14,7 +14,7 @@ describe(`values`, () => {
           rendered = size.render();
         });
         it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`3123.542px`);
+          expect(rendered).toEqual(`3123.542`);
         });
       });
     });
@@ -32,7 +32,7 @@ describe(`values`, () => {
             rendered = size.render();
           });
           it(`returns a SVG-compatible string`, () => {
-            expect(rendered).toEqual(`0px`);
+            expect(rendered).toEqual(`0`);
           });
         });
       });
