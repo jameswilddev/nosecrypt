@@ -3,23 +3,23 @@ import ValidateAnyNumber from "../../validation/validate-any-number";
 import ValidateAnyOptionalNumber from "../../validation/validate-any-optional-number";
 
 export default class Rotate implements Transform {
-  constructor(angle: number);
-  constructor(angle: number, x: number, y: number);
+  constructor(degrees: number);
+  constructor(degrees: number, x: number, y: number);
   constructor(
-    private readonly angle: number,
+    private readonly degrees: number,
     private readonly x?: number,
     private readonly y?: number
   ) {
-    ValidateAnyNumber(angle, `Rotate.angle`);
+    ValidateAnyNumber(degrees, `Rotate.degrees`);
     ValidateAnyOptionalNumber(x, `Rotate.x`);
     ValidateAnyOptionalNumber(y, `Rotate.y`);
   }
 
   render(): string {
     if (this.x === undefined) {
-      return `rotate(${this.angle})`;
+      return `rotate(${this.degrees})`;
     } else {
-      return `rotate(${this.angle} ${this.x} ${this.y})`;
+      return `rotate(${this.degrees} ${this.x} ${this.y})`;
     }
   }
 }
