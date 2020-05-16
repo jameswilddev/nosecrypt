@@ -40,6 +40,7 @@ export { default as ValidateOptionalUnitInterval } from "./validation/validate-o
 export { default as ValidateUnitInterval } from "./validation/validate-unit-interval";
 
 export { default as Color } from "./values/color";
+export { default as CommandSet } from "./values/command-set";
 export { default as Opacity } from "./values/opacity";
 export { default as Position } from "./values/position";
 export { default as Size } from "./values/size";
