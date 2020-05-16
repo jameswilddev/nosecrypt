@@ -23,6 +23,7 @@ export { default as VerticalLineToRelative } from "./commands/vertical-line-to-r
 
 export { default as Circle } from "./elements/circle";
 export { default as Element } from "./elements/element";
+export { default as Ellipse } from "./elements/ellipse";
 export { default as Path } from "./elements/path";
 
 export { default as Matrix } from "./transforms/matrix";
