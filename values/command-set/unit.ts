@@ -11,7 +11,7 @@ describe(`values`, () => {
       let thrown: Error;
       beforeAll(() => {
         try {
-          new CommandSet();
+          new CommandSet([]);
         } catch (e) {
           thrown = e;
         }
@@ -27,9 +27,9 @@ describe(`values`, () => {
     describe(`with one command`, () => {
       let commandSet: CommandSet;
       beforeAll(() => {
-        commandSet = new CommandSet(
-          new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40)
-        );
+        commandSet = new CommandSet([
+          new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
+        ]);
       });
 
       describe(`render`, () => {
@@ -46,10 +46,10 @@ describe(`values`, () => {
     describe(`with two commands`, () => {
       let commandSet: CommandSet;
       beforeAll(() => {
-        commandSet = new CommandSet(
+        commandSet = new CommandSet([
           new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
-          new MoveToRelative(-37, 43)
-        );
+          new MoveToRelative(-37, 43),
+        ]);
       });
 
       describe(`render`, () => {
@@ -66,11 +66,11 @@ describe(`values`, () => {
     describe(`with three commands`, () => {
       let commandSet: CommandSet;
       beforeAll(() => {
-        commandSet = new CommandSet(
+        commandSet = new CommandSet([
           new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
           new MoveToRelative(-37, 43),
-          new VerticalLineToAbsolute(67)
-        );
+          new VerticalLineToAbsolute(67),
+        ]);
       });
 
       describe(`render`, () => {

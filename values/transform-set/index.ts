@@ -3,12 +3,8 @@ import ValidateNotEmpty from "../../validation/validate-not-empty";
 import Value from "../value";
 
 export default class TransformSet implements Value {
-  private readonly transforms: ReadonlyArray<Transform>;
-
-  constructor(...transforms: ReadonlyArray<Transform>) {
+  constructor(private readonly transforms: ReadonlyArray<Transform>) {
     ValidateNotEmpty(transforms, `TransformSet.transforms`);
-
-    this.transforms = transforms;
   }
 
   render(): string {

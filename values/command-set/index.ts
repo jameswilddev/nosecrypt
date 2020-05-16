@@ -3,12 +3,8 @@ import ValidateNotEmpty from "../../validation/validate-not-empty";
 import Value from "../value";
 
 export default class CommandSet implements Value {
-  private readonly commands: ReadonlyArray<Command>;
-
-  constructor(...commands: ReadonlyArray<Command>) {
+  constructor(private readonly commands: ReadonlyArray<Command>) {
     ValidateNotEmpty(commands, `CommandSet.commands`);
-
-    this.commands = commands;
   }
 
   render(): string {
