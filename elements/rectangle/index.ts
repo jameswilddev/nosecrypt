@@ -1,15 +1,14 @@
-import Command from "../../commands/command";
 import Element from "../element";
 import Transform from "../../transforms/transform";
 import Color from "../../values/color";
-import CommandSet from "../../values/command-set";
 import Opacity from "../../values/opacity";
+import Position from "../../values/position";
 import Size from "../../values/size";
 import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
 
-export default class Path<TState> implements Element<TState> {
-  readonly tagName: string = `path`;
+export default class Rectangle<TState> implements Element<TState> {
+  readonly tagName: string = `rect`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];
 
@@ -18,7 +17,10 @@ export default class Path<TState> implements Element<TState> {
       state: TState
     ) => {
       readonly transforms?: ReadonlyArray<Transform>;
-      readonly commands?: ReadonlyArray<Command>;
+      readonly leftX?: number;
+      readonly topY?: number;
+      readonly width?: number;
+      readonly height?: number;
       readonly strokeWidth?: number;
       readonly strokeColor?: Color;
       readonly strokeOpacity?: number;
@@ -39,11 +41,20 @@ export default class Path<TState> implements Element<TState> {
       output.transform = new TransformSet(intermediate.transforms);
     }
 
-    if (
-      intermediate.commands !== undefined &&
-      intermediate.commands.length !== 0
-    ) {
-      output.d = new CommandSet(intermediate.commands);
+    if (intermediate.leftX !== undefined) {
+      output.x = new Position(intermediate.leftX);
+    }
+
+    if (intermediate.topY !== undefined) {
+      output.y = new Position(intermediate.topY);
+    }
+
+    if (intermediate.width !== undefined) {
+      output.width = new Size(intermediate.width);
+    }
+
+    if (intermediate.height !== undefined) {
+      output.height = new Size(intermediate.height);
     }
 
     if (intermediate.strokeWidth !== undefined) {

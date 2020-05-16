@@ -1,8 +1,10 @@
 import Element from "../element";
+import Transform from "../../transforms/transform";
 import Color from "../../values/color";
 import Opacity from "../../values/opacity";
 import Position from "../../values/position";
 import Size from "../../values/size";
+import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
 
 export default class Circle<TState> implements Element<TState> {
@@ -14,6 +16,7 @@ export default class Circle<TState> implements Element<TState> {
     private readonly renderCallback: (
       state: TState
     ) => {
+      readonly transforms?: ReadonlyArray<Transform>;
       readonly centerX?: number;
       readonly centerY?: number;
       readonly radius?: number;
@@ -30,36 +33,43 @@ export default class Circle<TState> implements Element<TState> {
 
     const intermediate = this.renderCallback(state);
 
+    if (
+      intermediate.transforms !== undefined &&
+      intermediate.transforms.length !== 0
+    ) {
+      output.transform = new TransformSet(intermediate.transforms);
+    }
+
     if (intermediate.centerX !== undefined) {
-      output.centerX = new Position(intermediate.centerX);
+      output.cx = new Position(intermediate.centerX);
     }
 
     if (intermediate.centerY !== undefined) {
-      output.centerY = new Position(intermediate.centerY);
+      output.cy = new Position(intermediate.centerY);
     }
 
     if (intermediate.radius !== undefined) {
-      output.radius = new Size(intermediate.radius);
+      output.r = new Size(intermediate.radius);
     }
 
     if (intermediate.strokeWidth !== undefined) {
-      output.strokeWidth = new Size(intermediate.strokeWidth);
+      output[`stroke-width`] = new Size(intermediate.strokeWidth);
     }
 
     if (intermediate.strokeColor !== undefined) {
-      output.strokeColor = intermediate.strokeColor;
+      output[`stroke-color`] = intermediate.strokeColor;
     }
 
     if (intermediate.strokeOpacity !== undefined) {
-      output.strokeOpacity = new Opacity(intermediate.strokeOpacity);
+      output[`stroke-opacity`] = new Opacity(intermediate.strokeOpacity);
     }
 
     if (intermediate.fillColor !== undefined) {
-      output.fillColor = intermediate.fillColor;
+      output[`fill-color`] = intermediate.fillColor;
     }
 
     if (intermediate.fillOpacity !== undefined) {
-      output.fillOpacity = new Opacity(intermediate.fillOpacity);
+      output[`fill-opacity`] = new Opacity(intermediate.fillOpacity);
     }
 
     return output;

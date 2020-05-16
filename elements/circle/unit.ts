@@ -1,4 +1,15 @@
-import { Circle, Value, Position, Size, Color, Opacity } from "../..";
+import {
+  Circle,
+  Rotate,
+  Scale,
+  Translate,
+  Value,
+  Position,
+  Size,
+  Color,
+  Opacity,
+  TransformSet,
+} from "../..";
 
 type TestState = `Test State`;
 
@@ -42,6 +53,144 @@ describe(`elements`, () => {
 
         it(`returns an empty attribute set`, () => {
           expect(rendered).toEqual({});
+        });
+      });
+    });
+
+    describe(`transforms`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ transforms: undefined });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`empty`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ transforms: [] });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
+            transforms: [
+              new Scale(23, -18),
+              new Translate(-4, 7),
+              new Rotate(90),
+            ],
+          });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a transform transform set`, () => {
+            expect(rendered).toEqual({ transform: jasmine.any(TransformSet) });
+          });
+
+          it(`returns an attribute set including the appropriate transform value`, () => {
+            expect(rendered.transform.render()).toEqual(
+              `scale(23,-18) translate(-4 7) rotate(90)`
+            );
+          });
         });
       });
     });
@@ -125,12 +274,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a centerX position`, () => {
-            expect(rendered).toEqual({ centerX: jasmine.any(Position) });
+          it(`returns an attribute set containing a cx position`, () => {
+            expect(rendered).toEqual({ cx: jasmine.any(Position) });
           });
 
-          it(`returns an attribute set including the appropriate centerX value`, () => {
-            expect(rendered.centerX.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate cx value`, () => {
+            expect(rendered.cx.render()).toEqual(`0`);
           });
         });
       });
@@ -171,12 +320,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a centerX position`, () => {
-            expect(rendered).toEqual({ centerX: jasmine.any(Position) });
+          it(`returns an attribute set containing a cx position`, () => {
+            expect(rendered).toEqual({ cx: jasmine.any(Position) });
           });
 
-          it(`returns an attribute set including the appropriate centerX value`, () => {
-            expect(rendered.centerX.render()).toEqual(`3287`);
+          it(`returns an attribute set including the appropriate cx value`, () => {
+            expect(rendered.cx.render()).toEqual(`3287`);
           });
         });
       });
@@ -261,12 +410,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a centerY position`, () => {
-            expect(rendered).toEqual({ centerY: jasmine.any(Position) });
+          it(`returns an attribute set containing a cy position`, () => {
+            expect(rendered).toEqual({ cy: jasmine.any(Position) });
           });
 
-          it(`returns an attribute set including the appropriate centerY value`, () => {
-            expect(rendered.centerY.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate cy value`, () => {
+            expect(rendered.cy.render()).toEqual(`0`);
           });
         });
       });
@@ -307,12 +456,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a centerY position`, () => {
-            expect(rendered).toEqual({ centerY: jasmine.any(Position) });
+          it(`returns an attribute set containing a cy position`, () => {
+            expect(rendered).toEqual({ cy: jasmine.any(Position) });
           });
 
-          it(`returns an attribute set including the appropriate centerY value`, () => {
-            expect(rendered.centerY.render()).toEqual(`3287`);
+          it(`returns an attribute set including the appropriate cy value`, () => {
+            expect(rendered.cy.render()).toEqual(`3287`);
           });
         });
       });
@@ -397,12 +546,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a radius size`, () => {
-            expect(rendered).toEqual({ radius: jasmine.any(Size) });
+          it(`returns an attribute set containing a r size`, () => {
+            expect(rendered).toEqual({ r: jasmine.any(Size) });
           });
 
-          it(`returns an attribute set including the appropriate radius value`, () => {
-            expect(rendered.radius.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate r value`, () => {
+            expect(rendered.r.render()).toEqual(`0`);
           });
         });
       });
@@ -443,12 +592,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a radius size`, () => {
-            expect(rendered).toEqual({ radius: jasmine.any(Size) });
+          it(`returns an attribute set containing a r size`, () => {
+            expect(rendered).toEqual({ r: jasmine.any(Size) });
           });
 
-          it(`returns an attribute set including the appropriate radius value`, () => {
-            expect(rendered.radius.render()).toEqual(`3287`);
+          it(`returns an attribute set including the appropriate r value`, () => {
+            expect(rendered.r.render()).toEqual(`3287`);
           });
         });
       });
@@ -533,12 +682,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a strokeWidth size`, () => {
-            expect(rendered).toEqual({ strokeWidth: jasmine.any(Size) });
+          it(`returns an attribute set containing a stroke-width size`, () => {
+            expect(rendered).toEqual({ "stroke-width": jasmine.any(Size) });
           });
 
-          it(`returns an attribute set including the appropriate strokeWidth value`, () => {
-            expect(rendered.strokeWidth.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate stroke-width value`, () => {
+            expect(rendered[`stroke-width`].render()).toEqual(`0`);
           });
         });
       });
@@ -579,12 +728,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a strokeWidth size`, () => {
-            expect(rendered).toEqual({ strokeWidth: jasmine.any(Size) });
+          it(`returns an attribute set containing a stroke-width size`, () => {
+            expect(rendered).toEqual({ "stroke-width": jasmine.any(Size) });
           });
 
-          it(`returns an attribute set including the appropriate strokeWidth value`, () => {
-            expect(rendered.strokeWidth.render()).toEqual(`3287`);
+          it(`returns an attribute set including the appropriate stroke-width value`, () => {
+            expect(rendered[`stroke-width`].render()).toEqual(`3287`);
           });
         });
       });
@@ -671,8 +820,8 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set including the appropriate strokeColor value`, () => {
-            expect(rendered.strokeColor).toBe(strokeColor);
+          it(`returns an attribute set including the appropriate stroke-color value`, () => {
+            expect(rendered[`stroke-color`]).toBe(strokeColor);
           });
         });
       });
@@ -757,12 +906,14 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a strokeOpacity opacity`, () => {
-            expect(rendered).toEqual({ strokeOpacity: jasmine.any(Opacity) });
+          it(`returns an attribute set containing a stroke-opacity opacity`, () => {
+            expect(rendered).toEqual({
+              "stroke-opacity": jasmine.any(Opacity),
+            });
           });
 
-          it(`returns an attribute set including the appropriate strokeOpacity value`, () => {
-            expect(rendered.strokeOpacity.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate stroke-opacity value`, () => {
+            expect(rendered[`stroke-opacity`].render()).toEqual(`0`);
           });
         });
       });
@@ -803,12 +954,14 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a strokeOpacity opacity`, () => {
-            expect(rendered).toEqual({ strokeOpacity: jasmine.any(Opacity) });
+          it(`returns an attribute set containing a stroke-opacity opacity`, () => {
+            expect(rendered).toEqual({
+              "stroke-opacity": jasmine.any(Opacity),
+            });
           });
 
-          it(`returns an attribute set including the appropriate strokeOpacity value`, () => {
-            expect(rendered.strokeOpacity.render()).toEqual(`0.4`);
+          it(`returns an attribute set including the appropriate stroke-opacity value`, () => {
+            expect(rendered[`stroke-opacity`].render()).toEqual(`0.4`);
           });
         });
       });
@@ -895,8 +1048,8 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set including the appropriate fillColor value`, () => {
-            expect(rendered.fillColor).toBe(fillColor);
+          it(`returns an attribute set including the appropriate fill-color value`, () => {
+            expect(rendered[`fill-color`]).toBe(fillColor);
           });
         });
       });
@@ -981,12 +1134,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a fillOpacity opacity`, () => {
-            expect(rendered).toEqual({ fillOpacity: jasmine.any(Opacity) });
+          it(`returns an attribute set containing a fill-opacity opacity`, () => {
+            expect(rendered).toEqual({ "fill-opacity": jasmine.any(Opacity) });
           });
 
-          it(`returns an attribute set including the appropriate fillOpacity value`, () => {
-            expect(rendered.fillOpacity.render()).toEqual(`0`);
+          it(`returns an attribute set including the appropriate fill-opacity value`, () => {
+            expect(rendered[`fill-opacity`].render()).toEqual(`0`);
           });
         });
       });
@@ -1027,12 +1180,12 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
-          it(`returns an attribute set containing a fillOpacity opacity`, () => {
-            expect(rendered).toEqual({ fillOpacity: jasmine.any(Opacity) });
+          it(`returns an attribute set containing a fill-opacity opacity`, () => {
+            expect(rendered).toEqual({ "fill-opacity": jasmine.any(Opacity) });
           });
 
-          it(`returns an attribute set including the appropriate fillOpacity value`, () => {
-            expect(rendered.fillOpacity.render()).toEqual(`0.4`);
+          it(`returns an attribute set including the appropriate fill-opacity value`, () => {
+            expect(rendered[`fill-opacity`].render()).toEqual(`0.4`);
           });
         });
       });
@@ -1047,6 +1200,11 @@ describe(`elements`, () => {
         strokeColor = new Color(0.2, 0.9, 0.45);
         fillColor = new Color(0.5, 0.4, 0.7);
         renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
+          transforms: [
+            new Scale(23, -18),
+            new Translate(-4, 7),
+            new Rotate(90),
+          ],
           centerX: 43,
           centerY: -64,
           radius: 12,
@@ -1087,47 +1245,54 @@ describe(`elements`, () => {
 
         it(`returns an attribute set containing a the correct types`, () => {
           expect(rendered).toEqual({
-            centerX: jasmine.any(Position),
-            centerY: jasmine.any(Position),
-            radius: jasmine.any(Size),
-            strokeWidth: jasmine.any(Size),
-            strokeColor: jasmine.any(Color),
-            strokeOpacity: jasmine.any(Opacity),
-            fillColor: jasmine.any(Color),
-            fillOpacity: jasmine.any(Opacity),
+            transform: jasmine.any(TransformSet),
+            cx: jasmine.any(Position),
+            cy: jasmine.any(Position),
+            r: jasmine.any(Size),
+            "stroke-width": jasmine.any(Size),
+            "stroke-color": jasmine.any(Color),
+            "stroke-opacity": jasmine.any(Opacity),
+            "fill-color": jasmine.any(Color),
+            "fill-opacity": jasmine.any(Opacity),
           });
         });
 
-        it(`returns an attribute set including the appropriate centerX value`, () => {
-          expect(rendered.centerX.render()).toEqual(`43`);
+        it(`returns an attribute set including the appropriate transform value`, () => {
+          expect(rendered.transform.render()).toEqual(
+            `scale(23,-18) translate(-4 7) rotate(90)`
+          );
         });
 
-        it(`returns an attribute set including the appropriate centerY value`, () => {
-          expect(rendered.centerY.render()).toEqual(`-64`);
+        it(`returns an attribute set including the appropriate cx value`, () => {
+          expect(rendered.cx.render()).toEqual(`43`);
         });
 
-        it(`returns an attribute set including the appropriate radius value`, () => {
-          expect(rendered.radius.render()).toEqual(`12`);
+        it(`returns an attribute set including the appropriate cy value`, () => {
+          expect(rendered.cy.render()).toEqual(`-64`);
         });
 
-        it(`returns an attribute set including the appropriate strokeWidth value`, () => {
-          expect(rendered.strokeWidth.render()).toEqual(`2`);
+        it(`returns an attribute set including the appropriate r value`, () => {
+          expect(rendered.r.render()).toEqual(`12`);
         });
 
-        it(`returns an attribute set including the appropriate strokeColor value`, () => {
-          expect(rendered.strokeColor).toBe(strokeColor);
+        it(`returns an attribute set including the appropriate stroke-width value`, () => {
+          expect(rendered[`stroke-width`].render()).toEqual(`2`);
         });
 
-        it(`returns an attribute set including the appropriate strokeOpacity value`, () => {
-          expect(rendered.strokeOpacity.render()).toEqual(`0.4`);
+        it(`returns an attribute set including the appropriate stroke-color value`, () => {
+          expect(rendered[`stroke-color`]).toBe(strokeColor);
         });
 
-        it(`returns an attribute set including the appropriate fillColor value`, () => {
-          expect(rendered.fillColor).toBe(fillColor);
+        it(`returns an attribute set including the appropriate stroke-opacity value`, () => {
+          expect(rendered[`stroke-opacity`].render()).toEqual(`0.4`);
         });
 
-        it(`returns an attribute set including the appropriate fillOpacity value`, () => {
-          expect(rendered.fillOpacity.render()).toEqual(`0.8`);
+        it(`returns an attribute set including the appropriate fill-color value`, () => {
+          expect(rendered[`fill-color`]).toBe(fillColor);
+        });
+
+        it(`returns an attribute set including the appropriate fill-opacity value`, () => {
+          expect(rendered[`fill-opacity`].render()).toEqual(`0.8`);
         });
       });
     });

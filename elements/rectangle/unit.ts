@@ -1,49 +1,46 @@
 import {
-  EllipticArcAbsolute,
-  MoveToRelative,
-  VerticalLineToAbsolute,
-  Path,
+  Rectangle,
   Rotate,
   Scale,
   Translate,
   Value,
+  Position,
   Size,
   Color,
   Opacity,
-  CommandSet,
   TransformSet,
 } from "../..";
 
 type TestState = `Test State`;
 
 describe(`elements`, () => {
-  describe(`Path`, () => {
+  describe(`Rectangle`, () => {
     describe(`empty`, () => {
       let renderCallback: jasmine.Spy;
-      let path: Path<TestState>;
+      let rectangle: Rectangle<TestState>;
       beforeAll(() => {
         renderCallback = jasmine
           .createSpy(`renderCallback`)
           .and.returnValue({});
-        path = new Path<TestState>(renderCallback);
+        rectangle = new Rectangle<TestState>(renderCallback);
       });
 
       describe(`tagName`, () => {
-        it(`is path`, () => {
-          expect(path.tagName).toEqual(`path`);
+        it(`is rect`, () => {
+          expect(rectangle.tagName).toEqual(`rect`);
         });
       });
 
       describe(`children`, () => {
         it(`is empty`, () => {
-          expect(path.children).toEqual([]);
+          expect(rectangle.children).toEqual([]);
         });
       });
 
       describe(`render`, () => {
         let rendered: { readonly [attribute: string]: Value };
         beforeAll(() => {
-          rendered = path.render(`Test State`);
+          rendered = rectangle.render(`Test State`);
         });
 
         it(`calls the render callback once`, () => {
@@ -63,30 +60,30 @@ describe(`elements`, () => {
     describe(`transforms`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ transforms: undefined });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -105,30 +102,30 @@ describe(`elements`, () => {
 
       describe(`empty`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ transforms: [] });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -147,7 +144,7 @@ describe(`elements`, () => {
 
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
             transforms: [
@@ -156,25 +153,25 @@ describe(`elements`, () => {
               new Rotate(90),
             ],
           });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -198,171 +195,33 @@ describe(`elements`, () => {
       });
     });
 
-    describe(`commands`, () => {
+    describe(`leftX`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
-            .and.returnValue({ commands: undefined });
-          path = new Path<TestState>(renderCallback);
+            .and.returnValue({ leftX: undefined });
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
-          });
-
-          it(`calls the render callback once`, () => {
-            expect(renderCallback).toHaveBeenCalledTimes(1);
-          });
-
-          it(`passes the state to the render callback`, () => {
-            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
-          });
-
-          it(`returns an empty attribute set`, () => {
-            expect(rendered).toEqual({});
-          });
-        });
-      });
-
-      describe(`empty`, () => {
-        let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
-        beforeAll(() => {
-          renderCallback = jasmine
-            .createSpy(`renderCallback`)
-            .and.returnValue({ commands: [] });
-          path = new Path<TestState>(renderCallback);
-        });
-
-        describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
-          });
-        });
-
-        describe(`children`, () => {
-          it(`is empty`, () => {
-            expect(path.children).toEqual([]);
-          });
-        });
-
-        describe(`render`, () => {
-          let rendered: { readonly [attribute: string]: Value };
-          beforeAll(() => {
-            rendered = path.render(`Test State`);
-          });
-
-          it(`calls the render callback once`, () => {
-            expect(renderCallback).toHaveBeenCalledTimes(1);
-          });
-
-          it(`passes the state to the render callback`, () => {
-            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
-          });
-
-          it(`returns an empty attribute set`, () => {
-            expect(rendered).toEqual({});
-          });
-        });
-      });
-
-      describe(`given`, () => {
-        let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
-        beforeAll(() => {
-          renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
-            commands: [
-              new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
-              new MoveToRelative(-37, 43),
-              new VerticalLineToAbsolute(67),
-            ],
-          });
-          path = new Path<TestState>(renderCallback);
-        });
-
-        describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
-          });
-        });
-
-        describe(`children`, () => {
-          it(`is empty`, () => {
-            expect(path.children).toEqual([]);
-          });
-        });
-
-        describe(`render`, () => {
-          let rendered: { readonly [attribute: string]: Value };
-          beforeAll(() => {
-            rendered = path.render(`Test State`);
-          });
-
-          it(`calls the render callback once`, () => {
-            expect(renderCallback).toHaveBeenCalledTimes(1);
-          });
-
-          it(`passes the state to the render callback`, () => {
-            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
-          });
-
-          it(`returns an attribute set containing a d command set`, () => {
-            expect(rendered).toEqual({ d: jasmine.any(CommandSet) });
-          });
-
-          it(`returns an attribute set including the appropriate d value`, () => {
-            expect(rendered.d.render()).toEqual(
-              `A24 -18 37 1 0 -10 -40m-37 43V67`
-            );
-          });
-        });
-      });
-    });
-
-    describe(`strokeWidth`, () => {
-      describe(`undefined`, () => {
-        let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
-        beforeAll(() => {
-          renderCallback = jasmine
-            .createSpy(`renderCallback`)
-            .and.returnValue({ strokeWidth: undefined });
-          path = new Path<TestState>(renderCallback);
-        });
-
-        describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
-          });
-        });
-
-        describe(`children`, () => {
-          it(`is empty`, () => {
-            expect(path.children).toEqual([]);
-          });
-        });
-
-        describe(`render`, () => {
-          let rendered: { readonly [attribute: string]: Value };
-          beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -381,30 +240,574 @@ describe(`elements`, () => {
 
       describe(`zero`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
-            .and.returnValue({ strokeWidth: 0 });
-          path = new Path<TestState>(renderCallback);
+            .and.returnValue({ leftX: 0 });
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a x position`, () => {
+            expect(rendered).toEqual({ x: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate x value`, () => {
+            expect(rendered.x.render()).toEqual(`0`);
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ leftX: 3287 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a x position`, () => {
+            expect(rendered).toEqual({ x: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate x value`, () => {
+            expect(rendered.x.render()).toEqual(`3287`);
+          });
+        });
+      });
+    });
+
+    describe(`topY`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ topY: undefined });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ topY: 0 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a y position`, () => {
+            expect(rendered).toEqual({ y: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate y value`, () => {
+            expect(rendered.y.render()).toEqual(`0`);
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ topY: 3287 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a y position`, () => {
+            expect(rendered).toEqual({ y: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate y value`, () => {
+            expect(rendered.y.render()).toEqual(`3287`);
+          });
+        });
+      });
+    });
+
+    describe(`width`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ width: undefined });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ width: 0 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a width size`, () => {
+            expect(rendered).toEqual({ width: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate width value`, () => {
+            expect(rendered.width.render()).toEqual(`0`);
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ width: 3287 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a width size`, () => {
+            expect(rendered).toEqual({ width: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate width value`, () => {
+            expect(rendered.width.render()).toEqual(`3287`);
+          });
+        });
+      });
+    });
+
+    describe(`height`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ height: undefined });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ height: 0 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a height size`, () => {
+            expect(rendered).toEqual({ height: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate height value`, () => {
+            expect(rendered.height.render()).toEqual(`0`);
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ height: 3287 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a height size`, () => {
+            expect(rendered).toEqual({ height: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate height value`, () => {
+            expect(rendered.height.render()).toEqual(`3287`);
+          });
+        });
+      });
+    });
+
+    describe(`strokeWidth`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeWidth: undefined });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let rectangle: Rectangle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeWidth: 0 });
+          rectangle = new Rectangle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(rectangle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -427,30 +830,30 @@ describe(`elements`, () => {
 
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeWidth: 3287 });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -475,30 +878,30 @@ describe(`elements`, () => {
     describe(`strokeColor`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeColor: undefined });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -518,31 +921,31 @@ describe(`elements`, () => {
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let strokeColor: Color;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           strokeColor = new Color(0.8, 0.2, 0.6);
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeColor });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -563,30 +966,30 @@ describe(`elements`, () => {
     describe(`strokeOpacity`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeOpacity: undefined });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -605,30 +1008,30 @@ describe(`elements`, () => {
 
       describe(`zero`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeOpacity: 0 });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -653,30 +1056,30 @@ describe(`elements`, () => {
 
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ strokeOpacity: 0.4 });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -703,30 +1106,30 @@ describe(`elements`, () => {
     describe(`fillColor`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ fillColor: undefined });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -746,31 +1149,31 @@ describe(`elements`, () => {
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let fillColor: Color;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           fillColor = new Color(0.8, 0.2, 0.6);
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ fillColor });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -791,30 +1194,30 @@ describe(`elements`, () => {
     describe(`fillOpacity`, () => {
       describe(`undefined`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ fillOpacity: undefined });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -833,30 +1236,30 @@ describe(`elements`, () => {
 
       describe(`zero`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ fillOpacity: 0 });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -879,30 +1282,30 @@ describe(`elements`, () => {
 
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
-        let path: Path<TestState>;
+        let rectangle: Rectangle<TestState>;
         beforeAll(() => {
           renderCallback = jasmine
             .createSpy(`renderCallback`)
             .and.returnValue({ fillOpacity: 0.4 });
-          path = new Path<TestState>(renderCallback);
+          rectangle = new Rectangle<TestState>(renderCallback);
         });
 
         describe(`tagName`, () => {
-          it(`is path`, () => {
-            expect(path.tagName).toEqual(`path`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
         describe(`children`, () => {
           it(`is empty`, () => {
-            expect(path.children).toEqual([]);
+            expect(rectangle.children).toEqual([]);
           });
         });
 
         describe(`render`, () => {
           let rendered: { readonly [attribute: string]: Value };
           beforeAll(() => {
-            rendered = path.render(`Test State`);
+            rendered = rectangle.render(`Test State`);
           });
 
           it(`calls the render callback once`, () => {
@@ -928,7 +1331,7 @@ describe(`elements`, () => {
       let strokeColor: Color;
       let fillColor: Color;
       let renderCallback: jasmine.Spy;
-      let path: Path<TestState>;
+      let rectangle: Rectangle<TestState>;
       beforeAll(() => {
         strokeColor = new Color(0.2, 0.9, 0.45);
         fillColor = new Color(0.5, 0.4, 0.7);
@@ -938,36 +1341,35 @@ describe(`elements`, () => {
             new Translate(-4, 7),
             new Rotate(90),
           ],
-          commands: [
-            new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
-            new MoveToRelative(-37, 43),
-            new VerticalLineToAbsolute(67),
-          ],
+          leftX: 43,
+          topY: -64,
+          width: 12,
+          height: 20,
           strokeWidth: 2,
           strokeColor,
           strokeOpacity: 0.4,
           fillColor,
           fillOpacity: 0.8,
         });
-        path = new Path<TestState>(renderCallback);
+        rectangle = new Rectangle<TestState>(renderCallback);
       });
 
       describe(`tagName`, () => {
-        it(`is path`, () => {
-          expect(path.tagName).toEqual(`path`);
+        it(`is rect`, () => {
+          expect(rectangle.tagName).toEqual(`rect`);
         });
       });
 
       describe(`children`, () => {
         it(`is empty`, () => {
-          expect(path.children).toEqual([]);
+          expect(rectangle.children).toEqual([]);
         });
       });
 
       describe(`render`, () => {
         let rendered: { readonly [attribute: string]: Value };
         beforeAll(() => {
-          rendered = path.render(`Test State`);
+          rendered = rectangle.render(`Test State`);
         });
 
         it(`calls the render callback once`, () => {
@@ -978,10 +1380,13 @@ describe(`elements`, () => {
           expect(renderCallback).toHaveBeenCalledWith(`Test State`);
         });
 
-        it(`returns an attribute set containing all correct types`, () => {
+        it(`returns an attribute set containing a the correct types`, () => {
           expect(rendered).toEqual({
             transform: jasmine.any(TransformSet),
-            d: jasmine.any(CommandSet),
+            x: jasmine.any(Position),
+            y: jasmine.any(Position),
+            width: jasmine.any(Size),
+            height: jasmine.any(Size),
             "stroke-width": jasmine.any(Size),
             "stroke-color": jasmine.any(Color),
             "stroke-opacity": jasmine.any(Opacity),
@@ -996,10 +1401,20 @@ describe(`elements`, () => {
           );
         });
 
-        it(`returns an attribute set including the appropriate d value`, () => {
-          expect(rendered.d.render()).toEqual(
-            `A24 -18 37 1 0 -10 -40m-37 43V67`
-          );
+        it(`returns an attribute set including the appropriate x value`, () => {
+          expect(rendered.x.render()).toEqual(`43`);
+        });
+
+        it(`returns an attribute set including the appropriate y value`, () => {
+          expect(rendered.y.render()).toEqual(`-64`);
+        });
+
+        it(`returns an attribute set including the appropriate width value`, () => {
+          expect(rendered.width.render()).toEqual(`12`);
+        });
+
+        it(`returns an attribute set including the appropriate height value`, () => {
+          expect(rendered.height.render()).toEqual(`20`);
         });
 
         it(`returns an attribute set including the appropriate stroke-width value`, () => {
