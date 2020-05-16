@@ -9,7 +9,7 @@ export default class LineToAbsolute implements Command {
   } {
     return {
       command: `L`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }
