@@ -9,7 +9,7 @@ export default class SmoothQuadraticToAbsolute implements Command {
   } {
     return {
       command: `T`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }

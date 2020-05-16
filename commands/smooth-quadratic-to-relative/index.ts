@@ -9,7 +9,7 @@ export default class SmoothQuadraticToRelative implements Command {
   } {
     return {
       command: `t`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }

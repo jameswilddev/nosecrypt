@@ -24,8 +24,8 @@ export default class EllipticArcAbsolute implements Command {
         this.largeArcFlag ? 1 : 0,
         this.sweepFlag ? 1 : 0,
         this.x,
-        this.y
-      ]
+        this.y,
+      ],
     };
   }
 }

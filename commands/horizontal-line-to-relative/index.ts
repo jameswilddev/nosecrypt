@@ -9,7 +9,7 @@ export default class HorizontalLineToRelative implements Command {
   } {
     return {
       command: `h`,
-      parameters: [this.x]
+      parameters: [this.x],
     };
   }
 }

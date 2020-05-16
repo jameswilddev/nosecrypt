@@ -9,7 +9,7 @@ export default class HorizontalLineToAbsolute implements Command {
   } {
     return {
       command: `H`,
-      parameters: [this.x]
+      parameters: [this.x],
     };
   }
 }

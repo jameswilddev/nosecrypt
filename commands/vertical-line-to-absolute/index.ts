@@ -9,7 +9,7 @@ export default class VerticalLineToAbsolute implements Command {
   } {
     return {
       command: `V`,
-      parameters: [this.y]
+      parameters: [this.y],
     };
   }
 }

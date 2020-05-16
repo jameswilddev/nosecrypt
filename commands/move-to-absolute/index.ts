@@ -9,7 +9,7 @@ export default class MoveToAbsolute implements Command {
   } {
     return {
       command: `M`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }

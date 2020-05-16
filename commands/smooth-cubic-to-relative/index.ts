@@ -14,7 +14,7 @@ export default class SmoothCubicToRelative implements Command {
   } {
     return {
       command: `s`,
-      parameters: [this.x2, this.y2, this.x, this.y]
+      parameters: [this.x2, this.y2, this.x, this.y],
     };
   }
 }

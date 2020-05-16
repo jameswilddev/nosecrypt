@@ -7,7 +7,7 @@ export default class ClosePath implements Command {
   } {
     return {
       command: `Z`,
-      parameters: []
+      parameters: [],
     };
   }
 }

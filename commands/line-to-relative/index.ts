@@ -9,7 +9,7 @@ export default class LineToRelative implements Command {
   } {
     return {
       command: `l`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }

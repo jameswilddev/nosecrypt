@@ -9,7 +9,7 @@ export default class MoveToRelative implements Command {
   } {
     return {
       command: `m`,
-      parameters: [this.x, this.y]
+      parameters: [this.x, this.y],
     };
   }
 }

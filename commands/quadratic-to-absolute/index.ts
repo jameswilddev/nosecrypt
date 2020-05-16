@@ -14,7 +14,7 @@ export default class QuadraticToAbsolute implements Command {
   } {
     return {
       command: `Q`,
-      parameters: [this.x1, this.y1, this.x, this.y]
+      parameters: [this.x1, this.y1, this.x, this.y],
     };
   }
 }

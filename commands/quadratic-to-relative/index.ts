@@ -14,7 +14,7 @@ export default class QuadraticToRelative implements Command {
   } {
     return {
       command: `q`,
-      parameters: [this.x1, this.y1, this.x, this.y]
+      parameters: [this.x1, this.y1, this.x, this.y],
     };
   }
 }

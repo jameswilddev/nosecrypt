@@ -9,7 +9,7 @@ export default class VerticalLineToRelative implements Command {
   } {
     return {
       command: `v`,
-      parameters: [this.y]
+      parameters: [this.y],
     };
   }
 }
