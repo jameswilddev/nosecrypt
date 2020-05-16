@@ -1,9 +1,11 @@
 import Command from "../../commands/command";
 import Element from "../element";
+import Transform from "../../transforms/transform";
 import Color from "../../values/color";
 import CommandSet from "../../values/command-set";
 import Opacity from "../../values/opacity";
 import Size from "../../values/size";
+import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
 
 export default class Path<TState> implements Element<TState> {
@@ -15,6 +17,7 @@ export default class Path<TState> implements Element<TState> {
     private readonly renderCallback: (
       state: TState
     ) => {
+      readonly transforms?: ReadonlyArray<Transform>;
       readonly commands?: ReadonlyArray<Command>;
       readonly strokeWidth?: number;
       readonly strokeColor?: Color;
@@ -28,6 +31,13 @@ export default class Path<TState> implements Element<TState> {
     const output: { [attribute: string]: Value } = {};
 
     const intermediate = this.renderCallback(state);
+
+    if (
+      intermediate.transforms !== undefined &&
+      intermediate.transforms.length !== 0
+    ) {
+      output.transform = new TransformSet(intermediate.transforms);
+    }
 
     if (
       intermediate.commands !== undefined &&

@@ -1,8 +1,10 @@
 import Element from "../element";
+import Transform from "../../transforms/transform";
 import Color from "../../values/color";
 import Opacity from "../../values/opacity";
 import Position from "../../values/position";
 import Size from "../../values/size";
+import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
 
 export default class Rectangle<TState> implements Element<TState> {
@@ -14,6 +16,7 @@ export default class Rectangle<TState> implements Element<TState> {
     private readonly renderCallback: (
       state: TState
     ) => {
+      readonly transforms?: ReadonlyArray<Transform>;
       readonly leftX?: number;
       readonly topY?: number;
       readonly width?: number;
@@ -30,6 +33,13 @@ export default class Rectangle<TState> implements Element<TState> {
     const output: { [attribute: string]: Value } = {};
 
     const intermediate = this.renderCallback(state);
+
+    if (
+      intermediate.transforms !== undefined &&
+      intermediate.transforms.length !== 0
+    ) {
+      output.transform = new TransformSet(intermediate.transforms);
+    }
 
     if (intermediate.leftX !== undefined) {
       output.x = new Position(intermediate.leftX);

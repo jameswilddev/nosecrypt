@@ -1,4 +1,15 @@
-import { Ellipse, Value, Position, Size, Color, Opacity } from "../..";
+import {
+  Ellipse,
+  Rotate,
+  Scale,
+  Translate,
+  Value,
+  Position,
+  Size,
+  Color,
+  Opacity,
+  TransformSet,
+} from "../..";
 
 type TestState = `Test State`;
 
@@ -42,6 +53,144 @@ describe(`elements`, () => {
 
         it(`returns an empty attribute set`, () => {
           expect(rendered).toEqual({});
+        });
+      });
+    });
+
+    describe(`transforms`, () => {
+      describe(`undefined`, () => {
+        let renderCallback: jasmine.Spy;
+        let ellipse: Ellipse<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ transforms: undefined });
+          ellipse = new Ellipse<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is ellipse`, () => {
+            expect(ellipse.tagName).toEqual(`ellipse`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(ellipse.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = ellipse.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`empty`, () => {
+        let renderCallback: jasmine.Spy;
+        let ellipse: Ellipse<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ transforms: [] });
+          ellipse = new Ellipse<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is ellipse`, () => {
+            expect(ellipse.tagName).toEqual(`ellipse`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(ellipse.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = ellipse.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an empty attribute set`, () => {
+            expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`given`, () => {
+        let renderCallback: jasmine.Spy;
+        let ellipse: Ellipse<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
+            transforms: [
+              new Scale(23, -18),
+              new Translate(-4, 7),
+              new Rotate(90),
+            ],
+          });
+          ellipse = new Ellipse<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is ellipse`, () => {
+            expect(ellipse.tagName).toEqual(`ellipse`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(ellipse.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = ellipse.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a transform transform set`, () => {
+            expect(rendered).toEqual({ transform: jasmine.any(TransformSet) });
+          });
+
+          it(`returns an attribute set including the appropriate transform value`, () => {
+            expect(rendered.transform.render()).toEqual(
+              `scale(23,-18) translate(-4 7) rotate(90)`
+            );
+          });
         });
       });
     });
@@ -1187,6 +1336,11 @@ describe(`elements`, () => {
         strokeColor = new Color(0.2, 0.9, 0.45);
         fillColor = new Color(0.5, 0.4, 0.7);
         renderCallback = jasmine.createSpy(`renderCallback`).and.returnValue({
+          transforms: [
+            new Scale(23, -18),
+            new Translate(-4, 7),
+            new Rotate(90),
+          ],
           centerX: 43,
           centerY: -64,
           radiusX: 12,
@@ -1228,6 +1382,7 @@ describe(`elements`, () => {
 
         it(`returns an attribute set containing a the correct types`, () => {
           expect(rendered).toEqual({
+            transform: jasmine.any(TransformSet),
             cx: jasmine.any(Position),
             cy: jasmine.any(Position),
             rx: jasmine.any(Size),
@@ -1238,6 +1393,12 @@ describe(`elements`, () => {
             "fill-color": jasmine.any(Color),
             "fill-opacity": jasmine.any(Opacity),
           });
+        });
+
+        it(`returns an attribute set including the appropriate transform value`, () => {
+          expect(rendered.transform.render()).toEqual(
+            `scale(23,-18) translate(-4 7) rotate(90)`
+          );
         });
 
         it(`returns an attribute set including the appropriate cx value`, () => {
