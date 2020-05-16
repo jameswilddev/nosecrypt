@@ -1,22 +1,17 @@
 import { Position } from "../..";
 import * as Helpers from "../../helpers/unit";
-import * as ValueHelpers from "../helpers/unit";
 
 describe(`values`, () => {
   describe(`Position`, () => {
-    ValueHelpers.renders(`when zero`, () => new Position(0), `0`);
+    Helpers.renders(`when zero`, () => new Position(0), `0`);
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when negative`,
       () => new Position(-3123.542),
       `-3123.542`
     );
 
-    ValueHelpers.renders(
-      `when positive`,
-      () => new Position(3123.542),
-      `3123.542`
-    );
+    Helpers.renders(`when positive`, () => new Position(3123.542), `3123.542`);
 
     Helpers.throws(
       `when NaN`,

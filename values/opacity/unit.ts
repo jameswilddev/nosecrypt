@@ -1,14 +1,13 @@
 import { Opacity } from "../..";
 import * as Helpers from "../../helpers/unit";
-import * as ValueHelpers from "../helpers/unit";
 
 describe(`values`, () => {
   describe(`Opacity`, () => {
-    ValueHelpers.renders(`when within bounds`, () => new Opacity(0.35), `0.35`);
+    Helpers.renders(`when within bounds`, () => new Opacity(0.35), `0.35`);
 
-    ValueHelpers.renders(`when at the lower bound`, () => new Opacity(0), `0`);
+    Helpers.renders(`when at the lower bound`, () => new Opacity(0), `0`);
 
-    ValueHelpers.renders(`when at the upper bound`, () => new Opacity(1), `1`);
+    Helpers.renders(`when at the upper bound`, () => new Opacity(1), `1`);
 
     Helpers.throws(
       `when NaN`,

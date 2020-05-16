@@ -1,12 +1,11 @@
 import { Size } from "../..";
 import * as Helpers from "../../helpers/unit";
-import * as ValueHelpers from "../helpers/unit";
 
 describe(`values`, () => {
   describe(`Size`, () => {
-    ValueHelpers.renders(`when zero`, () => new Size(0), `0`);
+    Helpers.renders(`when zero`, () => new Size(0), `0`);
 
-    ValueHelpers.renders(`when positive`, () => new Size(3123.542), `3123.542`);
+    Helpers.renders(`when positive`, () => new Size(3123.542), `3123.542`);
 
     Helpers.throws(
       `when NaN`,

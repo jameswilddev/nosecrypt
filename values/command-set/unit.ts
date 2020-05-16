@@ -5,7 +5,6 @@ import {
   VerticalLineToAbsolute,
 } from "../..";
 import * as Helpers from "../../helpers/unit";
-import * as ValueHelpers from "../helpers/unit";
 
 describe(`values`, () => {
   describe(`CommandSet`, () => {
@@ -15,7 +14,7 @@ describe(`values`, () => {
       `CommandSet.commands must not be empty`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `with one command`,
       () =>
         new CommandSet([
@@ -24,7 +23,7 @@ describe(`values`, () => {
       `A24 -18 37 1 0 -10 -40`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `with two commands`,
       () =>
         new CommandSet([
@@ -34,7 +33,7 @@ describe(`values`, () => {
       `A24 -18 37 1 0 -10 -40m-37 43`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `with three commands`,
       () =>
         new CommandSet([

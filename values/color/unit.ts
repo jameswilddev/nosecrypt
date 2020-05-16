@@ -1,38 +1,37 @@
 import { Color } from "../..";
 import * as Helpers from "../../helpers/unit";
-import * as ValueHelpers from "../helpers/unit";
 
 describe(`values`, () => {
   describe(`Color`, () => {
-    ValueHelpers.renders(`black`, () => Color.black, `#000`);
-    ValueHelpers.renders(`grey50`, () => Color.grey50, `#777`);
-    ValueHelpers.renders(`white`, () => Color.white, `#fff`);
+    Helpers.renders(`black`, () => Color.black, `#000`);
+    Helpers.renders(`grey50`, () => Color.grey50, `#777`);
+    Helpers.renders(`white`, () => Color.white, `#fff`);
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when all channels are within bounds`,
       () => new Color(0.35, 0.93456, 0.612),
       `#5e9`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when a channel is slightly below a threshold`,
       () => new Color(0.35, 0.874, 0.612),
       `#5d9`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when a channel is slightly above a threshold`,
       () => new Color(0.35, 0.876, 0.612),
       `#5e9`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when all channels are at the lower bound`,
       () => new Color(0, 0, 0),
       `#000`
     );
 
-    ValueHelpers.renders(
+    Helpers.renders(
       `when all channels are at the upper bound`,
       () => new Color(1, 1, 1),
       `#fff`
