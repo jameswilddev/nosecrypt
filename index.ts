@@ -1,4 +1,5 @@
 export { default as Json } from "./json";
+export { default as stableStringify } from "./json/stable-stringify";
 
 export { default as ClosePath } from "./commands/close-path";
 export { default as Command } from "./commands/command";
