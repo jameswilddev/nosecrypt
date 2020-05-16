@@ -15,7 +15,7 @@ export default class Path<TState> implements Element<TState> {
     private readonly renderCallback: (
       state: TState
     ) => {
-      readonly d?: ReadonlyArray<Command>;
+      readonly commands?: ReadonlyArray<Command>;
       readonly strokeWidth?: number;
       readonly strokeColor?: Color;
       readonly strokeOpacity?: number;
@@ -29,28 +29,31 @@ export default class Path<TState> implements Element<TState> {
 
     const intermediate = this.renderCallback(state);
 
-    if (intermediate.d !== undefined && intermediate.d.length !== 0) {
-      output.d = new CommandSet(intermediate.d);
+    if (
+      intermediate.commands !== undefined &&
+      intermediate.commands.length !== 0
+    ) {
+      output.d = new CommandSet(intermediate.commands);
     }
 
     if (intermediate.strokeWidth !== undefined) {
-      output.strokeWidth = new Size(intermediate.strokeWidth);
+      output[`stroke-width`] = new Size(intermediate.strokeWidth);
     }
 
     if (intermediate.strokeColor !== undefined) {
-      output.strokeColor = intermediate.strokeColor;
+      output[`stroke-color`] = intermediate.strokeColor;
     }
 
     if (intermediate.strokeOpacity !== undefined) {
-      output.strokeOpacity = new Opacity(intermediate.strokeOpacity);
+      output[`stroke-opacity`] = new Opacity(intermediate.strokeOpacity);
     }
 
     if (intermediate.fillColor !== undefined) {
-      output.fillColor = intermediate.fillColor;
+      output[`fill-color`] = intermediate.fillColor;
     }
 
     if (intermediate.fillOpacity !== undefined) {
-      output.fillOpacity = new Opacity(intermediate.fillOpacity);
+      output[`fill-opacity`] = new Opacity(intermediate.fillOpacity);
     }
 
     return output;
