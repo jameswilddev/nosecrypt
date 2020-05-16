@@ -8,7 +8,7 @@ import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
 
 export default class Rectangle<TState> implements Element<TState> {
-  readonly tagName: string = `rectangle`;
+  readonly tagName: string = `rect`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];
 

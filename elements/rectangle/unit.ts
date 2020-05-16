@@ -26,8 +26,8 @@ describe(`elements`, () => {
       });
 
       describe(`tagName`, () => {
-        it(`is rectangle`, () => {
-          expect(rectangle.tagName).toEqual(`rectangle`);
+        it(`is rect`, () => {
+          expect(rectangle.tagName).toEqual(`rect`);
         });
       });
 
@@ -69,8 +69,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -111,8 +111,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -157,8 +157,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -207,8 +207,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -249,8 +249,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -295,8 +295,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -343,8 +343,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -385,8 +385,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -431,8 +431,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -479,8 +479,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -521,8 +521,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -567,8 +567,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -615,8 +615,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -657,8 +657,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -703,8 +703,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -751,8 +751,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -793,8 +793,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -839,8 +839,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -887,8 +887,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -931,8 +931,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -975,8 +975,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1017,8 +1017,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1065,8 +1065,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1115,8 +1115,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1159,8 +1159,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1203,8 +1203,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1245,8 +1245,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1291,8 +1291,8 @@ describe(`elements`, () => {
         });
 
         describe(`tagName`, () => {
-          it(`is rectangle`, () => {
-            expect(rectangle.tagName).toEqual(`rectangle`);
+          it(`is rect`, () => {
+            expect(rectangle.tagName).toEqual(`rect`);
           });
         });
 
@@ -1355,8 +1355,8 @@ describe(`elements`, () => {
       });
 
       describe(`tagName`, () => {
-        it(`is rectangle`, () => {
-          expect(rectangle.tagName).toEqual(`rectangle`);
+        it(`is rect`, () => {
+          expect(rectangle.tagName).toEqual(`rect`);
         });
       });
 
