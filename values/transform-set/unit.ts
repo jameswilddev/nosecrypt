@@ -6,7 +6,7 @@ describe(`values`, () => {
       let thrown: Error;
       beforeAll(() => {
         try {
-          new TransformSet();
+          new TransformSet([]);
         } catch (e) {
           thrown = e;
         }
@@ -22,7 +22,7 @@ describe(`values`, () => {
     describe(`with one transform`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
-        transformSet = new TransformSet(new Scale(23, -18));
+        transformSet = new TransformSet([new Scale(23, -18)]);
       });
 
       describe(`render`, () => {
@@ -39,10 +39,10 @@ describe(`values`, () => {
     describe(`with two transforms`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
-        transformSet = new TransformSet(
+        transformSet = new TransformSet([
           new Scale(23, -18),
-          new Translate(-4, 7)
-        );
+          new Translate(-4, 7),
+        ]);
       });
 
       describe(`render`, () => {
@@ -59,11 +59,11 @@ describe(`values`, () => {
     describe(`with three transforms`, () => {
       let transformSet: TransformSet;
       beforeAll(() => {
-        transformSet = new TransformSet(
+        transformSet = new TransformSet([
           new Scale(23, -18),
           new Translate(-4, 7),
-          new Rotate(90)
-        );
+          new Rotate(90),
+        ]);
       });
 
       describe(`render`, () => {
