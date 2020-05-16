@@ -237,6 +237,52 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let path: Path<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeWidth: 0 });
+          path = new Path<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is path`, () => {
+            expect(path.tagName).toEqual(`path`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(path.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = path.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a strokeWidth size`, () => {
+            expect(rendered).toEqual({ strokeWidth: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate strokeWidth value`, () => {
+            expect(rendered.strokeWidth.render()).toEqual(`0`);
+          });
+        });
+      });
+
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let path: Path<TestState>;
@@ -415,6 +461,52 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let path: Path<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeOpacity: 0 });
+          path = new Path<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is path`, () => {
+            expect(path.tagName).toEqual(`path`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(path.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = path.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a strokeOpacity opacity`, () => {
+            expect(rendered).toEqual({ strokeOpacity: jasmine.any(Opacity) });
+          });
+
+          it(`returns an attribute set including the appropriate strokeOpacity value`, () => {
+            expect(rendered.strokeOpacity.render()).toEqual(`0`);
+          });
+        });
+      });
+
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let path: Path<TestState>;
@@ -589,6 +681,52 @@ describe(`elements`, () => {
 
           it(`returns an empty attribute set`, () => {
             expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let path: Path<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ fillOpacity: 0 });
+          path = new Path<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is path`, () => {
+            expect(path.tagName).toEqual(`path`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(path.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = path.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a fillOpacity opacity`, () => {
+            expect(rendered).toEqual({ fillOpacity: jasmine.any(Opacity) });
+          });
+
+          it(`returns an attribute set including the appropriate fillOpacity value`, () => {
+            expect(rendered.fillOpacity.render()).toEqual(`0`);
           });
         });
       });

@@ -89,6 +89,52 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ centerX: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a centerX position`, () => {
+            expect(rendered).toEqual({ centerX: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate centerX value`, () => {
+            expect(rendered.centerX.render()).toEqual(`0`);
+          });
+        });
+      });
+
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let circle: Circle<TestState>;
@@ -175,6 +221,52 @@ describe(`elements`, () => {
 
           it(`returns an empty attribute set`, () => {
             expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ centerY: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a centerY position`, () => {
+            expect(rendered).toEqual({ centerY: jasmine.any(Position) });
+          });
+
+          it(`returns an attribute set including the appropriate centerY value`, () => {
+            expect(rendered.centerY.render()).toEqual(`0`);
           });
         });
       });
@@ -269,6 +361,52 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ radius: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a radius size`, () => {
+            expect(rendered).toEqual({ radius: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate radius value`, () => {
+            expect(rendered.radius.render()).toEqual(`0`);
+          });
+        });
+      });
+
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let circle: Circle<TestState>;
@@ -355,6 +493,52 @@ describe(`elements`, () => {
 
           it(`returns an empty attribute set`, () => {
             expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeWidth: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a strokeWidth size`, () => {
+            expect(rendered).toEqual({ strokeWidth: jasmine.any(Size) });
+          });
+
+          it(`returns an attribute set including the appropriate strokeWidth value`, () => {
+            expect(rendered.strokeWidth.render()).toEqual(`0`);
           });
         });
       });
@@ -537,6 +721,52 @@ describe(`elements`, () => {
         });
       });
 
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ strokeOpacity: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a strokeOpacity opacity`, () => {
+            expect(rendered).toEqual({ strokeOpacity: jasmine.any(Opacity) });
+          });
+
+          it(`returns an attribute set including the appropriate strokeOpacity value`, () => {
+            expect(rendered.strokeOpacity.render()).toEqual(`0`);
+          });
+        });
+      });
+
       describe(`given`, () => {
         let renderCallback: jasmine.Spy;
         let circle: Circle<TestState>;
@@ -711,6 +941,52 @@ describe(`elements`, () => {
 
           it(`returns an empty attribute set`, () => {
             expect(rendered).toEqual({});
+          });
+        });
+      });
+
+      describe(`zero`, () => {
+        let renderCallback: jasmine.Spy;
+        let circle: Circle<TestState>;
+        beforeAll(() => {
+          renderCallback = jasmine
+            .createSpy(`renderCallback`)
+            .and.returnValue({ fillOpacity: 0 });
+          circle = new Circle<TestState>(renderCallback);
+        });
+
+        describe(`tagName`, () => {
+          it(`is circle`, () => {
+            expect(circle.tagName).toEqual(`circle`);
+          });
+        });
+
+        describe(`children`, () => {
+          it(`is empty`, () => {
+            expect(circle.children).toEqual([]);
+          });
+        });
+
+        describe(`render`, () => {
+          let rendered: { readonly [attribute: string]: Value };
+          beforeAll(() => {
+            rendered = circle.render(`Test State`);
+          });
+
+          it(`calls the render callback once`, () => {
+            expect(renderCallback).toHaveBeenCalledTimes(1);
+          });
+
+          it(`passes the state to the render callback`, () => {
+            expect(renderCallback).toHaveBeenCalledWith(`Test State`);
+          });
+
+          it(`returns an attribute set containing a fillOpacity opacity`, () => {
+            expect(rendered).toEqual({ fillOpacity: jasmine.any(Opacity) });
+          });
+
+          it(`returns an attribute set including the appropriate fillOpacity value`, () => {
+            expect(rendered.fillOpacity.render()).toEqual(`0`);
           });
         });
       });
