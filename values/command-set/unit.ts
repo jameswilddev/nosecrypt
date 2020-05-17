@@ -9,6 +9,12 @@ import * as Helpers from "../../helpers/unit";
 describe(`values`, () => {
   describe(`CommandSet`, () => {
     Helpers.throws(
+      `when undefined`,
+      () => new CommandSet(undefined),
+      `CommandSet.commands must be given`
+    );
+
+    Helpers.throws(
       `when empty`,
       () => new CommandSet([]),
       `CommandSet.commands must not be empty`

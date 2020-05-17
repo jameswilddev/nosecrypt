@@ -3,11 +3,13 @@ import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`TransformSet`, () => {
-    Helpers.throws(
-      `when empty`,
-      () => new TransformSet([]),
-      `TransformSet.transforms must not be empty`
+    Helpers.renders(
+      `when undefined`,
+      () => new TransformSet(undefined),
+      `none`
     );
+
+    Helpers.renders(`when empty`, () => new TransformSet([]), `none`);
 
     Helpers.renders(
       `with one transform`,

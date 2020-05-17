@@ -3,6 +3,8 @@ import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`Position`, () => {
+    Helpers.renders(`when undefined`, () => new Position(undefined), `0`);
+
     Helpers.renders(`when zero`, () => new Position(0), `0`);
 
     Helpers.renders(
@@ -16,19 +18,19 @@ describe(`values`, () => {
     Helpers.throws(
       `when NaN`,
       () => new Position(Number.NaN),
-      `Position.value must be a number`
+      `Position.value must be a number when given`
     );
 
     Helpers.throws(
       `when positive infinity`,
       () => new Position(Number.POSITIVE_INFINITY),
-      `Position.value must be finite`
+      `Position.value must be finite when given`
     );
 
     Helpers.throws(
       `when negative infinity`,
       () => new Position(Number.NEGATIVE_INFINITY),
-      `Position.value must be finite`
+      `Position.value must be finite when given`
     );
   });
 });
