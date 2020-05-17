@@ -30,44 +30,16 @@ export default class Path<TState> implements Element<TState> {
   ) {}
 
   render(state: TState): { readonly [attribute: string]: Value } {
-    const output: { [attribute: string]: Value } = {};
-
     const intermediate = this.renderCallback(state);
 
-    if (
-      intermediate.transforms !== undefined &&
-      intermediate.transforms.length !== 0
-    ) {
-      output.transform = new TransformSet(intermediate.transforms);
-    }
-
-    if (
-      intermediate.commands !== undefined &&
-      intermediate.commands.length !== 0
-    ) {
-      output.d = new CommandSet(intermediate.commands);
-    }
-
-    if (intermediate.strokeWidth !== undefined) {
-      output[`stroke-width`] = new Size(intermediate.strokeWidth);
-    }
-
-    if (intermediate.strokeColor !== undefined) {
-      output[`stroke-color`] = new StrokeColor(intermediate.strokeColor);
-    }
-
-    if (intermediate.strokeOpacity !== undefined) {
-      output[`stroke-opacity`] = new Opacity(intermediate.strokeOpacity);
-    }
-
-    if (intermediate.fillColor !== undefined) {
-      output[`fill-color`] = new FillColor(intermediate.fillColor);
-    }
-
-    if (intermediate.fillOpacity !== undefined) {
-      output[`fill-opacity`] = new Opacity(intermediate.fillOpacity);
-    }
-
-    return output;
+    return {
+      transform: new TransformSet(intermediate.transforms),
+      d: new CommandSet(intermediate.commands),
+      "stroke-width": new Size(intermediate.strokeWidth),
+      "stroke-color": new StrokeColor(intermediate.strokeColor),
+      "stroke-opacity": new Opacity(intermediate.strokeOpacity),
+      "fill-color": new FillColor(intermediate.fillColor),
+      "fill-opacity": new Opacity(intermediate.fillOpacity),
+    };
   }
 }

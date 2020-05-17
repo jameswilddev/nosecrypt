@@ -32,53 +32,19 @@ export default class Ellipse<TState> implements Element<TState> {
   ) {}
 
   render(state: TState): { readonly [attribute: string]: Value } {
-    const output: { [attribute: string]: Value } = {};
-
     const intermediate = this.renderCallback(state);
 
-    if (
-      intermediate.transforms !== undefined &&
-      intermediate.transforms.length !== 0
-    ) {
-      output.transform = new TransformSet(intermediate.transforms);
-    }
-
-    if (intermediate.centerX !== undefined) {
-      output.cx = new Position(intermediate.centerX);
-    }
-
-    if (intermediate.centerY !== undefined) {
-      output.cy = new Position(intermediate.centerY);
-    }
-
-    if (intermediate.radiusX !== undefined) {
-      output.rx = new Size(intermediate.radiusX);
-    }
-
-    if (intermediate.radiusY !== undefined) {
-      output.ry = new Size(intermediate.radiusY);
-    }
-
-    if (intermediate.strokeWidth !== undefined) {
-      output[`stroke-width`] = new Size(intermediate.strokeWidth);
-    }
-
-    if (intermediate.strokeColor !== undefined) {
-      output[`stroke-color`] = new StrokeColor(intermediate.strokeColor);
-    }
-
-    if (intermediate.strokeOpacity !== undefined) {
-      output[`stroke-opacity`] = new Opacity(intermediate.strokeOpacity);
-    }
-
-    if (intermediate.fillColor !== undefined) {
-      output[`fill-color`] = new FillColor(intermediate.fillColor);
-    }
-
-    if (intermediate.fillOpacity !== undefined) {
-      output[`fill-opacity`] = new Opacity(intermediate.fillOpacity);
-    }
-
-    return output;
+    return {
+      transform: new TransformSet(intermediate.transforms),
+      cx: new Position(intermediate.centerX),
+      cy: new Position(intermediate.centerY),
+      rx: new Size(intermediate.radiusX),
+      ry: new Size(intermediate.radiusY),
+      "stroke-width": new Size(intermediate.strokeWidth),
+      "stroke-color": new StrokeColor(intermediate.strokeColor),
+      "stroke-opacity": new Opacity(intermediate.strokeOpacity),
+      "fill-color": new FillColor(intermediate.fillColor),
+      "fill-opacity": new Opacity(intermediate.fillOpacity),
+    };
   }
 }
