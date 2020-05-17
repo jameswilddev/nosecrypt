@@ -41,6 +41,7 @@ export { default as Translate } from "./transforms/translate";
 
 export { default as ValidateAnyNumber } from "./validation/validate-any-number";
 export { default as ValidateAnyOptionalNumber } from "./validation/validate-any-optional-number";
+export { default as ValidateContainsAtLeastTwoItems } from "./validation/validate-contains-at-least-two-items";
 export { default as ValidateGiven } from "./validation/validate-given";
 export { default as ValidateNonNegative } from "./validation/validate-non-negative";
 export { default as ValidateNotEmpty } from "./validation/validate-not-empty";
