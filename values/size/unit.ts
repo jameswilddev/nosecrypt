@@ -1,107 +1,36 @@
 import { Size } from "../..";
+import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`Size`, () => {
-    describe(`when within bounds`, () => {
-      let size: Size;
-      beforeAll(() => {
-        size = new Size(3123.542);
-      });
+    Helpers.renders(`when undefined`, () => new Size(undefined), `0`);
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = size.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`3123.542`);
-        });
-      });
-    });
+    Helpers.renders(`when zero`, () => new Size(0), `0`);
 
-    describe(`when at the`, () => {
-      describe(`lower bound`, () => {
-        let size: Size;
-        beforeAll(() => {
-          size = new Size(0);
-        });
+    Helpers.renders(`when positive`, () => new Size(3123.542), `3123.542`);
 
-        describe(`render`, () => {
-          let rendered: string;
-          beforeAll(() => {
-            rendered = size.render();
-          });
-          it(`returns a SVG-compatible string`, () => {
-            expect(rendered).toEqual(`0`);
-          });
-        });
-      });
-    });
+    Helpers.throws(
+      `when NaN`,
+      () => new Size(Number.NaN),
+      `Size.value must be a number when given`
+    );
 
-    describe(`when`, () => {
-      describe(`NaN`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Size(Number.NaN);
-          } catch (e) {
-            thrown = e;
-          }
-        });
+    Helpers.throws(
+      `when positive infinity`,
+      () => new Size(Number.POSITIVE_INFINITY),
+      `Size.value must be finite when given`
+    );
 
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Size.value must be a number`));
-        });
-      });
+    Helpers.throws(
+      `when negative infinity`,
+      () => new Size(Number.NEGATIVE_INFINITY),
+      `Size.value must be finite when given`
+    );
 
-      describe(`positive infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Size(Number.POSITIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Size.value must be finite`));
-        });
-      });
-
-      describe(`negative infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Size(Number.NEGATIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Size.value must be finite`));
-        });
-      });
-    });
-
-    describe(`when beyond the`, () => {
-      describe(`lower bound`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Size(-0.01);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`Size.value must be greater than or equal to zero`)
-          );
-        });
-      });
-    });
+    Helpers.throws(
+      `when negative`,
+      () => new Size(-0.01),
+      `Size.value must be greater than or equal to zero when given`
+    );
   });
 });

@@ -1,80 +1,37 @@
 import { TransformSet, Scale, Translate, Rotate } from "../..";
+import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`TransformSet`, () => {
-    describe(`empty`, () => {
-      let thrown: Error;
-      beforeAll(() => {
-        try {
-          new TransformSet([]);
-        } catch (e) {
-          thrown = e;
-        }
-      });
+    Helpers.renders(
+      `when undefined`,
+      () => new TransformSet(undefined),
+      `none`
+    );
 
-      it(`throws the expected error`, () => {
-        expect(thrown).toEqual(
-          new Error(`TransformSet.transforms must not be empty`)
-        );
-      });
-    });
+    Helpers.renders(`when empty`, () => new TransformSet([]), `none`);
 
-    describe(`with one transform`, () => {
-      let transformSet: TransformSet;
-      beforeAll(() => {
-        transformSet = new TransformSet([new Scale(23, -18)]);
-      });
+    Helpers.renders(
+      `with one transform`,
+      () => new TransformSet([new Scale(23, -18)]),
+      `scale(23,-18)`
+    );
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = transformSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`scale(23,-18)`);
-        });
-      });
-    });
+    Helpers.renders(
+      `with two transforms`,
+      () => new TransformSet([new Scale(23, -18), new Translate(-4, 7)]),
+      `scale(23,-18) translate(-4 7)`
+    );
 
-    describe(`with two transforms`, () => {
-      let transformSet: TransformSet;
-      beforeAll(() => {
-        transformSet = new TransformSet([
-          new Scale(23, -18),
-          new Translate(-4, 7),
-        ]);
-      });
-
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = transformSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`scale(23,-18) translate(-4 7)`);
-        });
-      });
-    });
-
-    describe(`with three transforms`, () => {
-      let transformSet: TransformSet;
-      beforeAll(() => {
-        transformSet = new TransformSet([
+    Helpers.renders(
+      `with three transforms`,
+      () =>
+        new TransformSet([
           new Scale(23, -18),
           new Translate(-4, 7),
           new Rotate(90),
-        ]);
-      });
-
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = transformSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`scale(23,-18) translate(-4 7) rotate(90)`);
-        });
-      });
-    });
+        ]),
+      `scale(23,-18) translate(-4 7) rotate(90)`
+    );
   });
 });

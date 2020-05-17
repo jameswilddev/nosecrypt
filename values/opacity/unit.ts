@@ -1,141 +1,44 @@
 import { Opacity } from "../..";
+import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`Opacity`, () => {
-    describe(`when within bounds`, () => {
-      let opacity: Opacity;
-      beforeAll(() => {
-        opacity = new Opacity(0.35);
-      });
+    Helpers.renders(`when undefined`, () => new Opacity(undefined), `1`);
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = opacity.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`0.35`);
-        });
-      });
-    });
+    Helpers.renders(`when within bounds`, () => new Opacity(0.35), `0.35`);
 
-    describe(`when at the`, () => {
-      describe(`lower bound`, () => {
-        let opacity: Opacity;
-        beforeAll(() => {
-          opacity = new Opacity(0);
-        });
+    Helpers.renders(`when at the lower bound`, () => new Opacity(0), `0`);
 
-        describe(`render`, () => {
-          let rendered: string;
-          beforeAll(() => {
-            rendered = opacity.render();
-          });
-          it(`returns a SVG-compatible string`, () => {
-            expect(rendered).toEqual(`0`);
-          });
-        });
-      });
+    Helpers.renders(`when at the upper bound`, () => new Opacity(1), `1`);
 
-      describe(`upper bound`, () => {
-        let opacity: Opacity;
-        beforeAll(() => {
-          opacity = new Opacity(1);
-        });
+    Helpers.throws(
+      `when NaN`,
+      () => new Opacity(Number.NaN),
+      `Opacity.value must be a number when given`
+    );
 
-        describe(`render`, () => {
-          let rendered: string;
-          beforeAll(() => {
-            rendered = opacity.render();
-          });
-          it(`returns a SVG-compatible string`, () => {
-            expect(rendered).toEqual(`1`);
-          });
-        });
-      });
-    });
+    Helpers.throws(
+      `when positive infinity`,
+      () => new Opacity(Number.POSITIVE_INFINITY),
+      `Opacity.value must be finite when given`
+    );
 
-    describe(`when`, () => {
-      describe(`NaN`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Opacity(Number.NaN);
-          } catch (e) {
-            thrown = e;
-          }
-        });
+    Helpers.throws(
+      `when negative infinity`,
+      () => new Opacity(Number.NEGATIVE_INFINITY),
+      `Opacity.value must be finite when given`
+    );
 
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Opacity.value must be a number`));
-        });
-      });
+    Helpers.throws(
+      `when beyond the lower bound`,
+      () => new Opacity(-0.01),
+      `Opacity.value must be greater than or equal to zero when given`
+    );
 
-      describe(`positive infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Opacity(Number.POSITIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Opacity.value must be finite`));
-        });
-      });
-
-      describe(`negative infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Opacity(Number.NEGATIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Opacity.value must be finite`));
-        });
-      });
-    });
-
-    describe(`when beyond the`, () => {
-      describe(`lower bound`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Opacity(-0.01);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`Opacity.value must be greater than or equal to zero`)
-          );
-        });
-      });
-
-      describe(`upper bound`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Opacity(1.01);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(
-            new Error(`Opacity.value must be less than or equal to one`)
-          );
-        });
-      });
-    });
+    Helpers.throws(
+      `when beyond the upper bound`,
+      () => new Opacity(1.01),
+      `Opacity.value must be less than or equal to one when given`
+    );
   });
 });

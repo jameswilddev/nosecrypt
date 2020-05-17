@@ -1,6 +1,6 @@
-import Value from "../../values/value";
+import { Json, Value } from "../..";
 
-export default interface Element<TState> {
+export default interface Element<TState extends Json> {
   readonly tagName: string;
 
   readonly children: ReadonlyArray<Element<TState>>;

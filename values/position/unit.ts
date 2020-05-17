@@ -1,103 +1,36 @@
 import { Position } from "../..";
+import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`Position`, () => {
-    describe(`zero`, () => {
-      let position: Position;
-      beforeAll(() => {
-        position = new Position(0);
-      });
+    Helpers.renders(`when undefined`, () => new Position(undefined), `0`);
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = position.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`0`);
-        });
-      });
-    });
+    Helpers.renders(`when zero`, () => new Position(0), `0`);
 
-    describe(`negative`, () => {
-      let position: Position;
-      beforeAll(() => {
-        position = new Position(-3123.542);
-      });
+    Helpers.renders(
+      `when negative`,
+      () => new Position(-3123.542),
+      `-3123.542`
+    );
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = position.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`-3123.542`);
-        });
-      });
-    });
+    Helpers.renders(`when positive`, () => new Position(3123.542), `3123.542`);
 
-    describe(`positive`, () => {
-      let position: Position;
-      beforeAll(() => {
-        position = new Position(3123.542);
-      });
+    Helpers.throws(
+      `when NaN`,
+      () => new Position(Number.NaN),
+      `Position.value must be a number when given`
+    );
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = position.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`3123.542`);
-        });
-      });
-    });
+    Helpers.throws(
+      `when positive infinity`,
+      () => new Position(Number.POSITIVE_INFINITY),
+      `Position.value must be finite when given`
+    );
 
-    describe(`when`, () => {
-      describe(`NaN`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Position(Number.NaN);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Position.value must be a number`));
-        });
-      });
-
-      describe(`positive infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Position(Number.POSITIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Position.value must be finite`));
-        });
-      });
-
-      describe(`negative infinity`, () => {
-        let thrown: Error;
-        beforeAll(() => {
-          try {
-            new Position(Number.NEGATIVE_INFINITY);
-          } catch (e) {
-            thrown = e;
-          }
-        });
-
-        it(`throws the expected error`, () => {
-          expect(thrown).toEqual(new Error(`Position.value must be finite`));
-        });
-      });
-    });
+    Helpers.throws(
+      `when negative infinity`,
+      () => new Position(Number.NEGATIVE_INFINITY),
+      `Position.value must be finite when given`
+    );
   });
 });

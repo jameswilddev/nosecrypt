@@ -4,84 +4,50 @@ import {
   MoveToRelative,
   VerticalLineToAbsolute,
 } from "../..";
+import * as Helpers from "../../helpers/unit";
 
 describe(`values`, () => {
   describe(`CommandSet`, () => {
-    describe(`empty`, () => {
-      let thrown: Error;
-      beforeAll(() => {
-        try {
-          new CommandSet([]);
-        } catch (e) {
-          thrown = e;
-        }
-      });
+    Helpers.throws(
+      `when undefined`,
+      () => new CommandSet(undefined),
+      `CommandSet.commands must be given`
+    );
 
-      it(`throws the expected error`, () => {
-        expect(thrown).toEqual(
-          new Error(`CommandSet.commands must not be empty`)
-        );
-      });
-    });
+    Helpers.throws(
+      `when empty`,
+      () => new CommandSet([]),
+      `CommandSet.commands must not be empty`
+    );
 
-    describe(`with one command`, () => {
-      let commandSet: CommandSet;
-      beforeAll(() => {
-        commandSet = new CommandSet([
+    Helpers.renders(
+      `with one command`,
+      () =>
+        new CommandSet([
           new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
-        ]);
-      });
+        ]),
+      `A24 -18 37 1 0 -10 -40`
+    );
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = commandSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`A24 -18 37 1 0 -10 -40`);
-        });
-      });
-    });
-
-    describe(`with two commands`, () => {
-      let commandSet: CommandSet;
-      beforeAll(() => {
-        commandSet = new CommandSet([
+    Helpers.renders(
+      `with two commands`,
+      () =>
+        new CommandSet([
           new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
           new MoveToRelative(-37, 43),
-        ]);
-      });
+        ]),
+      `A24 -18 37 1 0 -10 -40m-37 43`
+    );
 
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = commandSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`A24 -18 37 1 0 -10 -40m-37 43`);
-        });
-      });
-    });
-
-    describe(`with three commands`, () => {
-      let commandSet: CommandSet;
-      beforeAll(() => {
-        commandSet = new CommandSet([
+    Helpers.renders(
+      `with three commands`,
+      () =>
+        new CommandSet([
           new EllipticArcAbsolute(24, -18, 37, true, false, -10, -40),
           new MoveToRelative(-37, 43),
           new VerticalLineToAbsolute(67),
-        ]);
-      });
-
-      describe(`render`, () => {
-        let rendered: string;
-        beforeAll(() => {
-          rendered = commandSet.render();
-        });
-        it(`returns a SVG-compatible string`, () => {
-          expect(rendered).toEqual(`A24 -18 37 1 0 -10 -40m-37 43V67`);
-        });
-      });
-    });
+        ]),
+      `A24 -18 37 1 0 -10 -40m-37 43V67`
+    );
   });
 });
