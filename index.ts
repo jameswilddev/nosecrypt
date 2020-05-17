@@ -33,6 +33,7 @@ export { default as Path } from "./elements/path";
 export { default as Polyline } from "./elements/polyline";
 export { default as Polygon } from "./elements/polygon";
 export { default as Rectangle } from "./elements/rectangle";
+export { default as Svg } from "./elements/svg";
 
 export { default as Matrix } from "./transforms/matrix";
 export { default as Rotate } from "./transforms/rotate";
