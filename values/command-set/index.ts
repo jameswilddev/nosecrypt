@@ -13,10 +13,6 @@ export default class CommandSet implements Value {
   }
 
   render(): string {
-    if (this.commands === undefined) {
-      return `inherit`;
-    }
-
     return this.commands
       .map((command) => command.render())
       .map(
