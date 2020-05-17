@@ -1,3 +1,5 @@
+export { default as Application } from "./application";
+
 export { default as Color } from "./color";
 
 export { default as Json } from "./json";
