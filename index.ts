@@ -27,6 +27,7 @@ export { default as VerticalLineToRelative } from "./commands/vertical-line-to-r
 export { default as Circle } from "./elements/circle";
 export { default as Element } from "./elements/element";
 export { default as Ellipse } from "./elements/ellipse";
+export { default as Group } from "./elements/group";
 export { default as Line } from "./elements/line";
 export { default as Path } from "./elements/path";
 export { default as Polyline } from "./elements/polyline";
