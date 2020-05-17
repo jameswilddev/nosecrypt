@@ -30,6 +30,7 @@ export { default as Ellipse } from "./elements/ellipse";
 export { default as Line } from "./elements/line";
 export { default as Path } from "./elements/path";
 export { default as Polyline } from "./elements/polyline";
+export { default as Polygon } from "./elements/polygon";
 export { default as Rectangle } from "./elements/rectangle";
 
 export { default as Matrix } from "./transforms/matrix";
