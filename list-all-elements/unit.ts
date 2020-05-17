@@ -25,7 +25,7 @@ describe(`ListAllElements`, () => {
       return {
         tagName: `Test Tag Name`,
         children,
-        render() {
+        render(): {} {
           throw new Error(`Unimplemented`);
         },
       };
