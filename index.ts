@@ -53,6 +53,7 @@ export { default as ValidateUnitInterval } from "./validation/validate-unit-inte
 export { default as CommandSet } from "./values/command-set";
 export { default as FillColor } from "./values/fill-color";
 export { default as Opacity } from "./values/opacity";
+export { default as PointSet } from "./values/point-set";
 export { default as Position } from "./values/position";
 export { default as Size } from "./values/size";
 export { default as StrokeColor } from "./values/stroke-color";
