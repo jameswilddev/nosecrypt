@@ -42,6 +42,7 @@ export { default as ValidateAnyNumber } from "./validation/validate-any-number";
 export { default as ValidateAnyOptionalNumber } from "./validation/validate-any-optional-number";
 export { default as ValidateNonNegative } from "./validation/validate-non-negative";
 export { default as ValidateNotEmpty } from "./validation/validate-not-empty";
+export { default as ValidateOptionalNonNegative } from "./validation/validate-optional-non-negative";
 export { default as ValidateOptionalNotEmpty } from "./validation/validate-optional-not-empty";
 export { default as ValidateOptionalUnitInterval } from "./validation/validate-optional-unit-interval";
 export { default as ValidateUnitInterval } from "./validation/validate-unit-interval";
