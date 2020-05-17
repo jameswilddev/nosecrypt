@@ -9,6 +9,8 @@ import {
   Color,
   Opacity,
   TransformSet,
+  FillColor,
+  StrokeColor,
 } from "../..";
 
 type TestState = `Test State`;
@@ -956,8 +958,14 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
+          it(`returns an attribute set containing a stroke-color opacity`, () => {
+            expect(rendered).toEqual({
+              "stroke-color": jasmine.any(StrokeColor),
+            });
+          });
+
           it(`returns an attribute set including the appropriate stroke-color value`, () => {
-            expect(rendered[`stroke-color`]).toBe(strokeColor);
+            expect(rendered[`stroke-color`].render()).toEqual(`#c39`);
           });
         });
       });
@@ -1184,8 +1192,14 @@ describe(`elements`, () => {
             expect(renderCallback).toHaveBeenCalledWith(`Test State`);
           });
 
+          it(`returns an attribute set containing a fill-color opacity`, () => {
+            expect(rendered).toEqual({
+              "fill-color": jasmine.any(FillColor),
+            });
+          });
+
           it(`returns an attribute set including the appropriate fill-color value`, () => {
-            expect(rendered[`fill-color`]).toBe(fillColor);
+            expect(rendered[`fill-color`].render()).toEqual(`#c39`);
           });
         });
       });
@@ -1388,9 +1402,9 @@ describe(`elements`, () => {
             width: jasmine.any(Size),
             height: jasmine.any(Size),
             "stroke-width": jasmine.any(Size),
-            "stroke-color": jasmine.any(Color),
+            "stroke-color": jasmine.any(StrokeColor),
             "stroke-opacity": jasmine.any(Opacity),
-            "fill-color": jasmine.any(Color),
+            "fill-color": jasmine.any(FillColor),
             "fill-opacity": jasmine.any(Opacity),
           });
         });
@@ -1422,7 +1436,7 @@ describe(`elements`, () => {
         });
 
         it(`returns an attribute set including the appropriate stroke-color value`, () => {
-          expect(rendered[`stroke-color`]).toBe(strokeColor);
+          expect(rendered[`stroke-color`].render()).toEqual(`#3e7`);
         });
 
         it(`returns an attribute set including the appropriate stroke-opacity value`, () => {
@@ -1430,7 +1444,7 @@ describe(`elements`, () => {
         });
 
         it(`returns an attribute set including the appropriate fill-color value`, () => {
-          expect(rendered[`fill-color`]).toBe(fillColor);
+          expect(rendered[`fill-color`].render()).toEqual(`#76b`);
         });
 
         it(`returns an attribute set including the appropriate fill-opacity value`, () => {

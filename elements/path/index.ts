@@ -1,7 +1,9 @@
 import Command from "../../commands/command";
 import Element from "../element";
 import Transform from "../../transforms/transform";
-import Color from "../../values/color";
+import Color from "../../color";
+import FillColor from "../../values/fill-color";
+import StrokeColor from "../../values/stroke-color";
 import CommandSet from "../../values/command-set";
 import Opacity from "../../values/opacity";
 import Size from "../../values/size";
@@ -51,7 +53,7 @@ export default class Path<TState> implements Element<TState> {
     }
 
     if (intermediate.strokeColor !== undefined) {
-      output[`stroke-color`] = intermediate.strokeColor;
+      output[`stroke-color`] = new StrokeColor(intermediate.strokeColor);
     }
 
     if (intermediate.strokeOpacity !== undefined) {
@@ -59,7 +61,7 @@ export default class Path<TState> implements Element<TState> {
     }
 
     if (intermediate.fillColor !== undefined) {
-      output[`fill-color`] = intermediate.fillColor;
+      output[`fill-color`] = new FillColor(intermediate.fillColor);
     }
 
     if (intermediate.fillOpacity !== undefined) {
