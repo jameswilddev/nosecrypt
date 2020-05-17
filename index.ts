@@ -63,3 +63,4 @@ export { default as Size } from "./values/size";
 export { default as StrokeColor } from "./values/stroke-color";
 export { default as TransformSet } from "./values/transform-set";
 export { default as Value } from "./values/value";
+export { default as ViewBox } from "./values/view-box";
