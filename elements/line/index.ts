@@ -1,14 +1,17 @@
-import Element from "../element";
-import Transform from "../../transforms/transform";
-import Color from "../../color";
-import StrokeColor from "../../values/stroke-color";
-import Opacity from "../../values/opacity";
-import Size from "../../values/size";
-import TransformSet from "../../values/transform-set";
-import Value from "../../values/value";
-import { Position } from "../..";
+import {
+  Json,
+  Element,
+  Transform,
+  Color,
+  Value,
+  TransformSet,
+  Position,
+  Size,
+  StrokeColor,
+  Opacity,
+} from "../..";
 
-export default class Line<TState> implements Element<TState> {
+export default class Line<TState extends Json> implements Element<TState> {
   readonly tagName: string = `line`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];

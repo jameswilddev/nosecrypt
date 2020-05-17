@@ -1,6 +1,6 @@
-import { Element } from "..";
+import { Element, Json } from "..";
 
-export default function ListAllElements<TState>(
+export default function ListAllElements<TState extends Json>(
   root: Element<TState>
 ): ReadonlyArray<Element<TState>> {
   const output: Element<TState>[] = [];

@@ -8,9 +8,10 @@ import {
   StrokeColor,
   Opacity,
   FillColor,
+  Json,
 } from "../..";
 
-export default class Svg<TState> implements Element<TState> {
+export default class Svg<TState extends Json> implements Element<TState> {
   readonly tagName: string = `svg`;
 
   constructor(

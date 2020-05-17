@@ -8,8 +8,9 @@ import Position from "../../values/position";
 import Size from "../../values/size";
 import TransformSet from "../../values/transform-set";
 import Value from "../../values/value";
+import Json from "../../json";
 
-export default class Circle<TState> implements Element<TState> {
+export default class Circle<TState extends Json> implements Element<TState> {
   readonly tagName: string = `circle`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];

@@ -1,16 +1,19 @@
-import Command from "../../commands/command";
-import Element from "../element";
-import Transform from "../../transforms/transform";
-import Color from "../../color";
-import FillColor from "../../values/fill-color";
-import StrokeColor from "../../values/stroke-color";
-import CommandSet from "../../values/command-set";
-import Opacity from "../../values/opacity";
-import Size from "../../values/size";
-import TransformSet from "../../values/transform-set";
-import Value from "../../values/value";
+import {
+  Json,
+  Element,
+  Transform,
+  Command,
+  Color,
+  Value,
+  TransformSet,
+  Size,
+  StrokeColor,
+  Opacity,
+  FillColor,
+  CommandSet,
+} from "../..";
 
-export default class Path<TState> implements Element<TState> {
+export default class Path<TState extends Json> implements Element<TState> {
   readonly tagName: string = `path`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];

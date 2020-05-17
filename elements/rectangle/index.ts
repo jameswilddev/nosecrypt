@@ -1,15 +1,18 @@
-import Element from "../element";
-import Transform from "../../transforms/transform";
-import Color from "../../color";
-import FillColor from "../../values/fill-color";
-import StrokeColor from "../../values/stroke-color";
-import Opacity from "../../values/opacity";
-import Position from "../../values/position";
-import Size from "../../values/size";
-import TransformSet from "../../values/transform-set";
-import Value from "../../values/value";
+import {
+  Json,
+  Element,
+  Transform,
+  Color,
+  Value,
+  TransformSet,
+  Position,
+  Size,
+  StrokeColor,
+  Opacity,
+  FillColor,
+} from "../..";
 
-export default class Rectangle<TState> implements Element<TState> {
+export default class Rectangle<TState extends Json> implements Element<TState> {
   readonly tagName: string = `rect`;
 
   readonly children: ReadonlyArray<Element<TState>> = [];
